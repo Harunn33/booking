@@ -13,7 +13,6 @@ class __CustomCheckboxState extends ConsumerState<_CustomCheckbox> {
   Widget build(BuildContext context) {
     final state = ref.watch(authProvider);
     final notifier = ref.read(authProvider.notifier);
-    final appStrings = AppStrings.instance;
     return Row(
       children: [
         Checkbox(
@@ -31,7 +30,7 @@ class __CustomCheckboxState extends ConsumerState<_CustomCheckbox> {
           onChanged: notifier.onChanged,
         ),
         Text(
-          appStrings.rememberMe,
+          context.l10n.rememberMe,
           style: Theme.of(context).textTheme.labelSmall,
         ),
       ],

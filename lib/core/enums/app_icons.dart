@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 enum AppIcons {
-  icLogo('ic_logo');
+  icLogo('ic_logo'),
+  icTrFlag('ic_tr_flag'),
+  icUsFlag('ic_us_flag');
 
   const AppIcons(this.value);
   final String value;

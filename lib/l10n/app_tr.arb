@@ -1,0 +1,51 @@
+{
+  "@@locale": "tr",
+  "login": "Giriş Yap",
+  "@login": {
+    "description": "Giriş yap düğmesi etiketi"
+  },
+  "skip": "Geç",
+  "@skip": {
+    "description": "Geç düğmesi etiketi"
+  },
+  "welcomeBack": "Tekrar hoş geldiniz",
+  "@welcomeBack": {
+    "description": "Geri dönen kullanıcılar için karşılama mesajı"
+  },
+  "loginToYourAccount": "Hesabınıza giriş yapın",
+  "@loginToYourAccount": {
+    "description": "Kullanıcının hesabına giriş yapması için bir mesaj"
+  },
+  "email": "E-posta",
+  "@email": {
+    "description": "E-posta giriş alanı etiketi"
+  },
+  "password": "Şifre",
+  "@password": {
+    "description": "Şifre giriş alanı etiketi"
+  },
+  "rememberMe": "Beni hatırla",
+  "@rememberMe": {
+    "description": "Beni hatırla kutucuğu etiketi"
+  },
+  "register": "Kayıt Ol",
+  "@register": {
+    "description": "Kayıt ol düğmesi etiketi"
+  },
+  "noResultFound": "Sonuç bulunamadı",
+  "@noResultFound": {
+    "description": "Sonuç bulunamadığında gösterilen mesaj"
+  },
+  "fieldIsRequired": "Bu alan gerekli",
+  "@fieldIsRequired": {
+    "description": "Zorunlu alanlar için doğrulama mesajı"
+  },
+  "invalidEmail": "Geçersiz e-posta",
+  "@invalidEmail": {
+    "description": "Geçersiz bir e-posta adresi için doğrulama mesajı"
+  },
+  "invalidPassword": "Geçersiz şifre",
+  "@invalidPassword": {
+    "description": "Geçersiz bir şifre için doğrulama mesajı"
+  }
+}

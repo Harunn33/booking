@@ -2,12 +2,10 @@ import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:piton_test_case/core/constants/app_strings.dart';
 import 'package:piton_test_case/core/routing/route_paths.dart';
 import 'package:piton_test_case/features/auth/presentation/pages/splash/splash_screen.dart';
 
 mixin SplashMixin on State<SplashScreen> {
-  final appStrings = AppStrings.instance;
   final routePaths = RoutePaths.instance;
 
   late final Timer _timer;

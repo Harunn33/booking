@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:piton_test_case/core/constants/app_colors.dart';
 import 'package:piton_test_case/core/constants/app_paddings.dart';
 import 'package:piton_test_case/core/enums/app_icons.dart';
+import 'package:piton_test_case/core/extensions/context_ext.dart';
 import 'package:piton_test_case/core/widgets/buttons/custom_primary_button.dart';
 import 'package:piton_test_case/core/widgets/buttons/custom_text_button.dart';
 import 'package:piton_test_case/features/auth/presentation/pages/splash/mixin/splash_mixin.dart';
@@ -30,12 +31,12 @@ class SplashScreenState extends State<SplashScreen> with SplashMixin {
             AppIcons.icLogo.svg,
             const Spacer(),
             CustomPrimaryButton(
-              text: appStrings.login,
+              text: context.l10n.login,
               onPressed: navigateToLogin,
             ),
             CustomTextButton(
               onPressed: navigateToLogin,
-              text: appStrings.skip,
+              text: context.l10n.skip,
             ),
             20.verticalSpace,
           ],

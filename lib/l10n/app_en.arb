@@ -1,0 +1,51 @@
+{
+  "@@locale": "en",
+  "login": "Login",
+  "@login": {
+    "description": "Label for the login button"
+  },
+  "skip": "Skip",
+  "@skip": {
+    "description": "Label for the skip button"
+  },
+  "welcomeBack": "Welcome back",
+  "@welcomeBack": {
+    "description": "A greeting message for returning users"
+  },
+  "loginToYourAccount": "Login to your account",
+  "@loginToYourAccount": {
+    "description": "Prompt for the user to login to their account"
+  },
+  "email": "Email",
+  "@email": {
+    "description": "Label for the email input field"
+  },
+  "password": "Password",
+  "@password": {
+    "description": "Label for the password input field"
+  },
+  "rememberMe": "Remember me",
+  "@rememberMe": {
+    "description": "Label for the remember me checkbox"
+  },
+  "register": "Register",
+  "@register": {
+    "description": "Label for the register button"
+  },
+  "noResultFound": "No result found",
+  "@noResultFound": {
+    "description": "Message displayed when no results are found"
+  },
+  "fieldIsRequired": "This field is required",
+  "@fieldIsRequired": {
+    "description": "Validation message for required fields"
+  },
+  "invalidEmail": "Invalid email",
+  "@invalidEmail": {
+    "description": "Validation message for an invalid email address"
+  },
+  "invalidPassword": "Invalid password",
+  "@invalidPassword": {
+    "description": "Validation message for an invalid password"
+  }
+}

@@ -1,9 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:piton_test_case/core/helpers/validators_helpers.dart';
 
 enum InputType { text, email, password }
 
 extension InputTypeExt on InputType {
-  String? getValidator(String? value) {
+  String? getValidator(String? value, {required BuildContext context}) {
     if (value == null) {
       return null;
     }
@@ -11,9 +12,11 @@ extension InputTypeExt on InputType {
       case InputType.text:
         return null;
       case InputType.email:
-        return ValidatorsHelpers.instance.emailValidator(value);
+        return ValidatorsHelpers.instance
+            .emailValidator(value, context: context);
       case InputType.password:
-        return ValidatorsHelpers.instance.passwordValidator(value);
+        return ValidatorsHelpers.instance
+            .passwordValidator(value, context: context);
     }
   }
 }

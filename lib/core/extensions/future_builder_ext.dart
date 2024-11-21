@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:piton_test_case/core/constants/app_strings.dart';
+import 'package:piton_test_case/core/extensions/context_ext.dart';
 
 class CustomFutureBuilder<T> {
   CustomFutureBuilder(Future<T> future) : _future = future;
@@ -24,7 +24,7 @@ class CustomFutureBuilder<T> {
             ConnectionState.done => snapshot.hasData
                 ? snapshot.data is List
                     ? (snapshot.data! as List).isEmpty
-                        ? emptyWidget ?? _defaultEmptyWidget
+                        ? emptyWidget ?? _defaultEmptyWidget(context)
                         : onSuccess(snapshot.data)
                     : onSuccess(snapshot.data)
                 : onError ?? _defaultErrorWidget,
@@ -39,11 +39,13 @@ class CustomFutureBuilder<T> {
       );
   Widget get _defaultNotFoundWidget => const Center(child: Text('Not Found'));
   Widget get _defaultErrorWidget => const Center(child: Text('Error'));
-  Widget get _defaultEmptyWidget => Center(
-        child: Text(
-          AppStrings.instance.noResultFound,
-        ),
-      );
+  Widget _defaultEmptyWidget(BuildContext context) {
+    return Center(
+      child: Text(
+        context.l10n.noResultFound,
+      ),
+    );
+  }
 }
 
 extension FutureExt<T> on Future<T> {

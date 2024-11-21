@@ -30,7 +30,10 @@ class CustomPrimaryInput extends StatelessWidget {
         ),
         10.verticalSpace,
         TextFormField(
-          validator: inputType.getValidator,
+          validator: (value) => inputType.getValidator(
+            value,
+            context: context,
+          ),
           controller: controller,
           onTapOutside: (event) => FocusScope.of(context).unfocus(),
           cursorColor: appColors.majorelleBlue,
