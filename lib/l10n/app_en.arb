@@ -59,5 +59,33 @@
   "name": "Name",
   "@name": {
     "description": "Label for the name input field"
+  },
+  "catalog": "Catalog",
+  "@catalog": {
+    "description": "Label for the catalog button"
+  },
+  "all": "All",
+  "@all": {
+    "description": "Label for the all button"
+  },
+  "bestSeller": "Best Seller",
+  "@bestSeller": {
+    "description": "Label for the best seller button"
+  },
+  "classics": "Classics",
+  "@classics": {
+    "description": "Label for the classics button"
+  },
+  "children": "Children",
+  "@children": {
+    "description": "Label for the children button"
+  },
+  "philosophy": "Philosophy",
+  "@philosophy": {
+    "description": "Label for the philosophy button"
+  },
+  "viewAll": "View All",
+  "@viewAll": {
+    "description": "Label for the view all button"
   }
 }

@@ -7,4 +7,6 @@ final class ApiConstants {
   final Duration receiveTimeout = const Duration(seconds: 5);
   final String login = 'login';
   final String register = 'register';
+  final String categories = 'categories';
+  final String products = 'products';
 }

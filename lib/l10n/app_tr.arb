@@ -59,5 +59,33 @@
   "name": "Ad",
   "@name": {
     "description": "Ad giriş alanı etiketi"
+  },
+  "catalog": "Katalog",
+  "@catalog": {
+    "description": "Katalog düğmesi etiketi"
+  },
+  "all": "Tümü",
+  "@all": {
+    "description": "Tümü düğmesi etiketi"
+  },
+  "bestSeller": "En Çok Satan",
+  "@bestSeller": {
+    "description": "En çok satanlar düğmesi etiketi"
+  },
+  "classics": "Klasikler",
+  "@classics": {
+    "description": "Klasikler düğmesi etiketi"
+  },
+  "children": "Çocuklar",
+  "@children": {
+    "description": "Çocuklar düğmesi etiketi"
+  },
+  "philosophy": "Felsefe",
+  "@philosophy": {
+    "description": "Felsefe düğmesi etiketi"
+  },
+  "viewAll": "Tümünü Gör",
+  "@viewAll": {
+    "description": "Tümünü gör düğmesi etiketi"
   }
 }

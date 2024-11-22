@@ -3,7 +3,7 @@ import 'package:piton_test_case/core/routing/route_paths.dart';
 import 'package:piton_test_case/features/auth/presentation/pages/login/login_screen.dart';
 import 'package:piton_test_case/features/auth/presentation/pages/register/register_screen.dart';
 import 'package:piton_test_case/features/auth/presentation/pages/splash/splash_screen.dart';
-import 'package:piton_test_case/features/home/home_screen.dart';
+import 'package:piton_test_case/features/home/presentation/pages/home_screen.dart';
 
 part 'app_router.gr.dart';
 

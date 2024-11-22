@@ -18,6 +18,12 @@ final class CustomTheme {
       iconTheme: IconThemeData(
         color: AppColors.instance.cosmicVoid,
       ),
+      surfaceTintColor: Colors.transparent,
+      titleTextStyle: TextStyle(
+        fontFamily: AppFonts.manropeBold.value,
+        fontSize: 20.sp,
+        color: AppColors.instance.cosmicVoid,
+      ),
     ),
     brightness: Brightness.light,
     colorScheme: ColorScheme.light(
@@ -35,6 +41,11 @@ final class CustomTheme {
         fontSize: 16.sp,
         color: AppColors.instance.majorelleBlue,
       ),
+      titleSmall: TextStyle(
+        fontFamily: AppFonts.manropeSemiBold.value,
+        fontSize: 12.sp,
+        color: AppColors.instance.majorelleBlue,
+      ),
       labelMedium: TextStyle(
         fontFamily: AppFonts.manropeRegular.value,
         fontSize: 16.sp,
@@ -44,6 +55,16 @@ final class CustomTheme {
         fontFamily: AppFonts.manropeBold.value,
         fontSize: 12.sp,
         color: AppColors.instance.majorelleBlue,
+      ),
+      displayMedium: TextStyle(
+        fontFamily: AppFonts.manropeBold.value,
+        fontSize: 16.sp,
+        color: AppColors.instance.majorelleBlue,
+      ),
+      displaySmall: TextStyle(
+        fontFamily: AppFonts.manropeSemiBold.value,
+        fontSize: 10.sp,
+        color: AppColors.instance.cosmicVoid,
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
