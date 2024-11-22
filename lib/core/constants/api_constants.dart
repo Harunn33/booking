@@ -2,11 +2,12 @@ final class ApiConstants {
   ApiConstants._();
   static final ApiConstants instance = ApiConstants._();
 
-  final String baseUrl = 'https://assign-api.piton.com.tr/api/rest/';
-  final Duration connectTimeout = const Duration(seconds: 5);
-  final Duration receiveTimeout = const Duration(seconds: 5);
-  final String login = 'login';
-  final String register = 'register';
-  final String categories = 'categories';
-  final String products = 'products';
+  final baseUrl = 'https://assign-api.piton.com.tr/api/rest/';
+  final connectTimeout = const Duration(seconds: 5);
+  final receiveTimeout = const Duration(seconds: 5);
+  final login = 'login';
+  final register = 'register';
+  final categories = 'categories';
+  final products = 'products';
+  final coverImage = 'cover_image';
 }

@@ -1,10 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:piton_test_case/core/constants/app_colors.dart';
 import 'package:piton_test_case/core/constants/app_paddings.dart';
 import 'package:piton_test_case/core/extensions/border_radius_ext.dart';
 import 'package:piton_test_case/core/extensions/string_ext.dart';
+import 'package:piton_test_case/core/widgets/cached_network_image/custom_cached_network_image.dart';
 import 'package:piton_test_case/features/home/data/model/product/resp/product_response_model.dart';
 
 class CustomProductCard extends StatelessWidget {
@@ -30,10 +30,8 @@ class CustomProductCard extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: 4.radiusAll,
-            child: CachedNetworkImage(
-              imageUrl: 'https://picsum.photos/200/300',
-              height: 120.h,
-              width: 80.w,
+            child: CustomCachedNetworkImage(
+              imageUrl: product.cover,
             ),
           ),
           10.horizontalSpace,
@@ -63,7 +61,7 @@ class CustomProductCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '\$${product.price}',
+                  '${product.price} \$',
                   style: Theme.of(context).textTheme.displayMedium,
                 ),
               ],

@@ -8,6 +8,8 @@ import 'package:piton_test_case/core/constants/api_constants.dart';
 import 'package:piton_test_case/core/extensions/context_ext.dart';
 import 'package:piton_test_case/core/init/app_init.dart';
 import 'package:piton_test_case/features/home/data/model/category/category_response_model.dart';
+import 'package:piton_test_case/features/home/data/model/cover_image/req/cover_image_request_model.dart';
+import 'package:piton_test_case/features/home/data/model/cover_image/resp/cover_image_response_model.dart';
 import 'package:piton_test_case/features/home/domain/repository/home_repository.dart';
 import 'package:piton_test_case/features/home/presentation/states/home_state.dart';
 
@@ -164,6 +166,24 @@ class HomeNotifier extends AutoDisposeNotifier<HomeState> {
           ],
         );
       }
+      final updatedAllProductsByCategory = await Future.wait(
+        state.allProductsByCategory.map((productList) async {
+          final updatedProducts = await Future.wait(
+            productList.product.map((product) async {
+              final coverImage =
+                  await _getCoverImage(context, fileName: product.cover);
+              return product.copyWith(
+                cover: coverImage?.actionProductImage.url ?? '',
+              );
+            }).toList(),
+          );
+          return productList.copyWith(product: updatedProducts);
+        }).toList(),
+      );
+
+      state = state.copyWith(
+        allProductsByCategory: updatedAllProductsByCategory,
+      );
       await getIt<ProductCacheService>().cacheProducts(
         allProductsByCategory: state.allProductsByCategory,
       );
@@ -174,5 +194,29 @@ class HomeNotifier extends AutoDisposeNotifier<HomeState> {
     } finally {
       state = state.copyWith(isLoading: false);
     }
+  }
+
+  Future<CoverImageResponseModel?> _getCoverImage(
+    BuildContext context, {
+    required String fileName,
+  }) async {
+    state = state.copyWith(isLoading: true);
+    try {
+      return await getIt<HomeRepository>().getCoverImageByFileName(
+        context,
+        endpoint:
+            ApiConstants.instance.baseUrl + ApiConstants.instance.coverImage,
+        coverImageRequestModel: CoverImageRequestModel(
+          fileName: fileName,
+        ),
+      );
+    } on DioException catch (e) {
+      context.showSnackBar(
+        e.response?.statusMessage ?? '',
+      );
+    } finally {
+      state = state.copyWith(isLoading: false);
+    }
+    return null;
   }
 }
