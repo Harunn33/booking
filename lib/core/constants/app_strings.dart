@@ -5,8 +5,10 @@ final class AppStrings {
 
   static AppStrings get instance => _instance;
 
+  // General
   String get appName => 'Piton Catalog';
   // Login Screen
+  String get hintName => 'John Doe';
   String get hintEmail => 'john@mail.com';
   String get hintPassword => '········';
 }

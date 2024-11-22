@@ -8,12 +8,16 @@ class AuthState with _$AuthState {
   const factory AuthState({
     required bool isRememberMe,
     required bool isLoading,
-    required GlobalKey<FormState> formKey,
+    required GlobalKey<FormState> loginFormKey,
+    required GlobalKey<FormState> registerFormKey,
+    required String token,
   }) = _AuthState;
 
   factory AuthState.initial() => AuthState(
         isRememberMe: false,
         isLoading: false,
-        formKey: GlobalKey<FormState>(),
+        loginFormKey: GlobalKey<FormState>(),
+        registerFormKey: GlobalKey<FormState>(),
+        token: '',
       );
 }

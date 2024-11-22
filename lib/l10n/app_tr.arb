@@ -28,9 +28,17 @@
   "@rememberMe": {
     "description": "Beni hatırla kutucuğu etiketi"
   },
+  "welcome": "Hoş geldiniz",
+  "@welcome": {
+    "description": "Yeni kullanıcılar için karşılama mesajı"
+  },
   "register": "Kayıt Ol",
   "@register": {
     "description": "Kayıt ol düğmesi etiketi"
+  },
+  "registerForAnAccount": "Hesap oluştur",
+  "@registerForAnAccount": {
+    "description": "Kullanıcının bir hesap oluşturması için bir mesaj"
   },
   "noResultFound": "Sonuç bulunamadı",
   "@noResultFound": {
@@ -47,5 +55,9 @@
   "invalidPassword": "Geçersiz şifre",
   "@invalidPassword": {
     "description": "Geçersiz bir şifre için doğrulama mesajı"
+  },
+  "name": "Ad",
+  "@name": {
+    "description": "Ad giriş alanı etiketi"
   }
 }

@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:piton_test_case/core/routing/route_paths.dart';
+import 'package:piton_test_case/features/auth/domain/repository/auth_repository.dart';
 import 'package:piton_test_case/features/auth/presentation/pages/splash/splash_screen.dart';
 
 mixin SplashMixin on State<SplashScreen> {
@@ -22,10 +24,17 @@ mixin SplashMixin on State<SplashScreen> {
     _timer.cancel();
   }
 
-  void navigateToLogin() {
+  Future<void> navigateToLogin() async {
     if (_timer.isActive) {
       _timer.cancel();
     }
-    context.router.pushNamed(routePaths.login);
+    final authService = GetIt.instance<AuthRepository>();
+    final isRememberMe = await authService.isRememberMe();
+
+    if (isRememberMe) {
+      context.router.replaceNamed(routePaths.home);
+    } else {
+      context.router.replaceNamed(routePaths.login);
+    }
   }
 }

@@ -5,10 +5,13 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:piton_test_case/core/constants/api_constants.dart';
+import 'package:piton_test_case/core/enums/local_storage_key.dart';
 import 'package:piton_test_case/core/extensions/context_ext.dart';
 import 'package:piton_test_case/core/init/app_init.dart';
 import 'package:piton_test_case/core/routing/route_paths.dart';
+import 'package:piton_test_case/core/services/local/local_storage_service_impl.dart';
 import 'package:piton_test_case/features/auth/data/model/login/req/login_request_model.dart';
+import 'package:piton_test_case/features/auth/data/model/register/req/register_request_model.dart';
 import 'package:piton_test_case/features/auth/domain/repository/auth_repository.dart';
 import 'package:piton_test_case/features/auth/presentation/states/auth_state.dart';
 
@@ -33,15 +36,11 @@ class AuthNotifier extends AutoDisposeNotifier<AuthState> {
     state = state.copyWith(isRememberMe: value);
   }
 
-  void navigateToRegister(BuildContext context) {
-    context.router.pushNamed(RoutePaths.instance.register);
-  }
-
   Future<void> handleLogin(
     BuildContext context, {
     required LoginRequestModel loginRequestModel,
   }) async {
-    if (state.formKey.currentState!.validate()) {
+    if (state.loginFormKey.currentState!.validate()) {
       state = state.copyWith(isLoading: true);
       try {
         final resultLogin = await getIt<AuthRepository>().handleLogin(
@@ -50,8 +49,47 @@ class AuthNotifier extends AutoDisposeNotifier<AuthState> {
           loginRequestModel: loginRequestModel,
         );
         if (resultLogin.actionLogin.token.isNotEmpty) {
+          state = state.copyWith(token: resultLogin.actionLogin.token);
+          if (state.isRememberMe) {
+            getIt<LocalStorageService>().saveData<bool>(
+              LocalStorageKey.isRememberMe.value,
+              state.isRememberMe,
+            );
+            getIt<LocalStorageService>().saveData<String>(
+              LocalStorageKey.token.value,
+              resultLogin.actionLogin.token,
+            );
+          }
           unawaited(
-            context.router.pushNamed(RoutePaths.instance.home),
+            context.router.replaceNamed(RoutePaths.instance.home),
+          );
+        }
+      } on DioException catch (e) {
+        context.showSnackBar(
+          e.response?.statusMessage ?? '',
+        );
+      } finally {
+        state = state.copyWith(isLoading: false);
+      }
+    }
+  }
+
+  Future<void> handleRegister(
+    BuildContext context, {
+    required RegisterRequestModel registerRequestModel,
+  }) async {
+    if (state.registerFormKey.currentState!.validate()) {
+      state = state.copyWith(isLoading: true);
+      try {
+        final resultLogin = await getIt<AuthRepository>().handleRegister(
+          context,
+          endpoint:
+              ApiConstants.instance.baseUrl + ApiConstants.instance.register,
+          registerRequestModel: registerRequestModel,
+        );
+        if (resultLogin.actionRegister.token.isNotEmpty) {
+          unawaited(
+            context.router.replaceNamed(RoutePaths.instance.home),
           );
         }
       } on DioException catch (e) {

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:piton_test_case/core/routing/app_router.dart';
-import 'package:piton_test_case/core/services/network/dio_service.dart';
+import 'package:piton_test_case/core/services/local/local_storage_service_impl.dart';
+import 'package:piton_test_case/core/services/network/dio_service_impl.dart';
 import 'package:piton_test_case/features/auth/data/repository/auth_repository_impl.dart';
 import 'package:piton_test_case/features/auth/domain/repository/auth_repository.dart';
 
@@ -23,5 +24,10 @@ final class AppInitialization {
     GetIt.I.registerSingleton<AuthRepository>(
       AuthRepositoryImpl(GetIt.I<DioService>()),
     );
+    GetIt.I.registerSingletonAsync<LocalStorageService>(() async {
+      final service = LocalStorageServiceImpl.instance;
+      await service.init();
+      return service;
+    });
   }
 }

@@ -28,9 +28,17 @@
   "@rememberMe": {
     "description": "Label for the remember me checkbox"
   },
+  "welcome": "Welcome",
+  "@welcome": {
+    "description": "A greeting message for new users"
+  },
   "register": "Register",
   "@register": {
     "description": "Label for the register button"
+  },
+  "registerForAnAccount": "Register for an account",
+  "@registerForAnAccount": {
+    "description": "Prompt for the user to register for an account"
   },
   "noResultFound": "No result found",
   "@noResultFound": {
@@ -47,5 +55,9 @@
   "invalidPassword": "Invalid password",
   "@invalidPassword": {
     "description": "Validation message for an invalid password"
+  },
+  "name": "Name",
+  "@name": {
+    "description": "Label for the name input field"
   }
 }

@@ -18,7 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthState {
   bool get isRememberMe => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
-  GlobalKey<FormState> get formKey => throw _privateConstructorUsedError;
+  GlobalKey<FormState> get loginFormKey => throw _privateConstructorUsedError;
+  GlobalKey<FormState> get registerFormKey =>
+      throw _privateConstructorUsedError;
+  String get token => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthStateCopyWith<AuthState> get copyWith =>
@@ -30,7 +33,12 @@ abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res, AuthState>;
   @useResult
-  $Res call({bool isRememberMe, bool isLoading, GlobalKey<FormState> formKey});
+  $Res call(
+      {bool isRememberMe,
+      bool isLoading,
+      GlobalKey<FormState> loginFormKey,
+      GlobalKey<FormState> registerFormKey,
+      String token});
 }
 
 /// @nodoc
@@ -48,7 +56,9 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   $Res call({
     Object? isRememberMe = null,
     Object? isLoading = null,
-    Object? formKey = null,
+    Object? loginFormKey = null,
+    Object? registerFormKey = null,
+    Object? token = null,
   }) {
     return _then(_value.copyWith(
       isRememberMe: null == isRememberMe
@@ -59,10 +69,18 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      formKey: null == formKey
-          ? _value.formKey
-          : formKey // ignore: cast_nullable_to_non_nullable
+      loginFormKey: null == loginFormKey
+          ? _value.loginFormKey
+          : loginFormKey // ignore: cast_nullable_to_non_nullable
               as GlobalKey<FormState>,
+      registerFormKey: null == registerFormKey
+          ? _value.registerFormKey
+          : registerFormKey // ignore: cast_nullable_to_non_nullable
+              as GlobalKey<FormState>,
+      token: null == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -75,7 +93,12 @@ abstract class _$$AuthStateImplCopyWith<$Res>
       __$$AuthStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isRememberMe, bool isLoading, GlobalKey<FormState> formKey});
+  $Res call(
+      {bool isRememberMe,
+      bool isLoading,
+      GlobalKey<FormState> loginFormKey,
+      GlobalKey<FormState> registerFormKey,
+      String token});
 }
 
 /// @nodoc
@@ -91,7 +114,9 @@ class __$$AuthStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isRememberMe = null,
     Object? isLoading = null,
-    Object? formKey = null,
+    Object? loginFormKey = null,
+    Object? registerFormKey = null,
+    Object? token = null,
   }) {
     return _then(_$AuthStateImpl(
       isRememberMe: null == isRememberMe
@@ -102,10 +127,18 @@ class __$$AuthStateImplCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      formKey: null == formKey
-          ? _value.formKey
-          : formKey // ignore: cast_nullable_to_non_nullable
+      loginFormKey: null == loginFormKey
+          ? _value.loginFormKey
+          : loginFormKey // ignore: cast_nullable_to_non_nullable
               as GlobalKey<FormState>,
+      registerFormKey: null == registerFormKey
+          ? _value.registerFormKey
+          : registerFormKey // ignore: cast_nullable_to_non_nullable
+              as GlobalKey<FormState>,
+      token: null == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -116,18 +149,24 @@ class _$AuthStateImpl implements _AuthState {
   const _$AuthStateImpl(
       {required this.isRememberMe,
       required this.isLoading,
-      required this.formKey});
+      required this.loginFormKey,
+      required this.registerFormKey,
+      required this.token});
 
   @override
   final bool isRememberMe;
   @override
   final bool isLoading;
   @override
-  final GlobalKey<FormState> formKey;
+  final GlobalKey<FormState> loginFormKey;
+  @override
+  final GlobalKey<FormState> registerFormKey;
+  @override
+  final String token;
 
   @override
   String toString() {
-    return 'AuthState(isRememberMe: $isRememberMe, isLoading: $isLoading, formKey: $formKey)';
+    return 'AuthState(isRememberMe: $isRememberMe, isLoading: $isLoading, loginFormKey: $loginFormKey, registerFormKey: $registerFormKey, token: $token)';
   }
 
   @override
@@ -139,12 +178,16 @@ class _$AuthStateImpl implements _AuthState {
                 other.isRememberMe == isRememberMe) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            (identical(other.formKey, formKey) || other.formKey == formKey));
+            (identical(other.loginFormKey, loginFormKey) ||
+                other.loginFormKey == loginFormKey) &&
+            (identical(other.registerFormKey, registerFormKey) ||
+                other.registerFormKey == registerFormKey) &&
+            (identical(other.token, token) || other.token == token));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, isRememberMe, isLoading, formKey);
+  int get hashCode => Object.hash(runtimeType, isRememberMe, isLoading,
+      loginFormKey, registerFormKey, token);
 
   @JsonKey(ignore: true)
   @override
@@ -157,14 +200,20 @@ abstract class _AuthState implements AuthState {
   const factory _AuthState(
       {required final bool isRememberMe,
       required final bool isLoading,
-      required final GlobalKey<FormState> formKey}) = _$AuthStateImpl;
+      required final GlobalKey<FormState> loginFormKey,
+      required final GlobalKey<FormState> registerFormKey,
+      required final String token}) = _$AuthStateImpl;
 
   @override
   bool get isRememberMe;
   @override
   bool get isLoading;
   @override
-  GlobalKey<FormState> get formKey;
+  GlobalKey<FormState> get loginFormKey;
+  @override
+  GlobalKey<FormState> get registerFormKey;
+  @override
+  String get token;
   @override
   @JsonKey(ignore: true)
   _$$AuthStateImplCopyWith<_$AuthStateImpl> get copyWith =>

@@ -4,8 +4,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:piton_test_case/core/enums/app_icons.dart';
 
 enum AppLanguages {
-  english(flag: AppIcons.icUsFlag, name: 'English', code: 'en'),
-  turkish(flag: AppIcons.icTrFlag, name: 'Türkçe', code: 'tr');
+  english(
+    flag: AppIcons.icUsFlag,
+    name: 'English',
+    code: 'en',
+  ),
+  turkish(
+    flag: AppIcons.icTrFlag,
+    name: 'Türkçe',
+    code: 'tr',
+  );
 
   const AppLanguages({
     required this.flag,

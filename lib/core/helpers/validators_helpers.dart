@@ -17,6 +17,12 @@ final class ValidatorsHelpers {
     return RegExp(_passwordPattern).hasMatch(password);
   }
 
+  String? textValidator(String? value, {required BuildContext context}) {
+    if (value == null) return null;
+    if (value.isEmpty) return context.l10n.fieldIsRequired;
+    return null;
+  }
+
   String? emailValidator(String? value, {required BuildContext context}) {
     if (value == null) return null;
     if (value.isEmpty) return context.l10n.fieldIsRequired;

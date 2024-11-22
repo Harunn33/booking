@@ -2,36 +2,30 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:piton_test_case/core/constants/app_paddings.dart';
 import 'package:piton_test_case/core/constants/app_strings.dart';
-import 'package:piton_test_case/core/routing/route_paths.dart';
-import 'package:piton_test_case/features/auth/data/model/login/req/login_request_model.dart';
-import 'package:piton_test_case/features/auth/presentation/pages/login/login_screen.dart';
+import 'package:piton_test_case/features/auth/data/model/register/req/register_request_model.dart';
+import 'package:piton_test_case/features/auth/presentation/pages/register/register_screen.dart';
 import 'package:piton_test_case/features/auth/presentation/providers/auth_notifier.dart';
 
-mixin LoginMixin on State<LoginScreen> {
+mixin RegisterMixin on State<RegisterScreen> {
   final appStrings = AppStrings.instance;
   final appPaddings = AppPaddings.instance;
 
+  final nameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  @override
-  void dispose() {
-    emailController.dispose();
-    passwordController.dispose();
-    super.dispose();
+  void navigateToLogin(BuildContext context) {
+    context.router.back();
   }
 
-  void navigateToRegister(BuildContext context) {
-    context.router.pushNamed(RoutePaths.instance.register);
-  }
-
-  Future<void> handleLogin(
+  Future<void> handleRegister(
     BuildContext context, {
     required AuthNotifier notifier,
   }) async {
-    await notifier.handleLogin(
+    await notifier.handleRegister(
       context,
-      loginRequestModel: LoginRequestModel(
+      registerRequestModel: RegisterRequestModel(
+        name: nameController.text,
         email: emailController.text,
         password: passwordController.text,
       ),
@@ -40,6 +34,7 @@ mixin LoginMixin on State<LoginScreen> {
   }
 
   void clearControllers() {
+    nameController.clear();
     emailController.clear();
     passwordController.clear();
   }

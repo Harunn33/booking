@@ -10,7 +10,8 @@ extension InputTypeExt on InputType {
     }
     switch (this) {
       case InputType.text:
-        return null;
+        return ValidatorsHelpers.instance
+            .textValidator(value, context: context);
       case InputType.email:
         return ValidatorsHelpers.instance
             .emailValidator(value, context: context);

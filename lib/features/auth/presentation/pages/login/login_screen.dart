@@ -9,7 +9,6 @@ import 'package:piton_test_case/core/extensions/context_ext.dart';
 import 'package:piton_test_case/core/widgets/buttons/custom_primary_button.dart';
 import 'package:piton_test_case/core/widgets/buttons/custom_text_button.dart';
 import 'package:piton_test_case/core/widgets/inputs/custom_primary_input.dart';
-import 'package:piton_test_case/features/auth/data/model/login/req/login_request_model.dart';
 import 'package:piton_test_case/features/auth/presentation/pages/login/mixin/login_mixin.dart';
 import 'package:piton_test_case/features/auth/presentation/providers/auth_notifier.dart';
 import 'package:piton_test_case/features/language/presentation/pages/language_popup_menu.dart';
@@ -43,7 +42,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> with LoginMixin {
       ),
       body: SafeArea(
         child: Form(
-          key: state.formKey,
+          key: state.loginFormKey,
           child: Padding(
             padding: appPaddings.horizontal,
             child: Column(
@@ -90,7 +89,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> with LoginMixin {
                     CustomTextButton(
                       text: context.l10n.register,
                       textStyle: Theme.of(context).textTheme.labelSmall,
-                      onPressed: () => notifier.navigateToRegister(context),
+                      onPressed: () => navigateToRegister(context),
                     ),
                   ],
                 ),
@@ -100,15 +99,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> with LoginMixin {
                 CustomPrimaryButton(
                   text: context.l10n.login,
                   isLoading: state.isLoading,
-                  onPressed: () {
-                    notifier.handleLogin(
-                      context,
-                      loginRequestModel: LoginRequestModel(
-                        email: emailController.text,
-                        password: passwordController.text,
-                      ),
-                    );
-                  },
+                  onPressed: () => handleLogin(
+                    context,
+                    notifier: notifier,
+                  ),
                 ),
               ],
             ),

@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:piton_test_case/core/routing/route_paths.dart';
 import 'package:piton_test_case/features/auth/presentation/pages/login/login_screen.dart';
 import 'package:piton_test_case/features/auth/presentation/pages/register/register_screen.dart';
 import 'package:piton_test_case/features/auth/presentation/pages/splash/splash_screen.dart';
@@ -11,20 +12,20 @@ class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(
-          path: '/',
+          path: RoutePaths.instance.splash,
           page: SplashRoute.page,
           initial: true,
         ),
         AutoRoute(
-          path: '/login',
+          path: RoutePaths.instance.login,
           page: LoginRoute.page,
         ),
         AutoRoute(
-          path: '/register',
+          path: RoutePaths.instance.register,
           page: RegisterRoute.page,
         ),
         AutoRoute(
-          path: '/home',
+          path: RoutePaths.instance.home,
           page: HomeRoute.page,
         ),
       ];
