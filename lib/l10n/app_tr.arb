@@ -48,11 +48,11 @@
   "@fieldIsRequired": {
     "description": "Zorunlu alanlar için doğrulama mesajı"
   },
-  "invalidEmail": "Geçersiz e-posta",
+  "invalidEmail": "Lütfen geçerli bir e-posta adresi girin",
   "@invalidEmail": {
     "description": "Geçersiz bir e-posta adresi için doğrulama mesajı"
   },
-  "invalidPassword": "Geçersiz şifre",
+  "invalidPassword": "Geçersiz şifre. Şifre 6-20 karakter uzunluğunda olmalı ve yalnızca harf ve rakam içermelidir.",
   "@invalidPassword": {
     "description": "Geçersiz bir şifre için doğrulama mesajı"
   },

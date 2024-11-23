@@ -33,14 +33,16 @@ mixin LoginMixin on State<LoginScreen> {
     BuildContext context, {
     required AuthNotifier notifier,
   }) async {
-    await notifier.handleLogin(
+    final result = await notifier.handleLogin(
       context,
       loginRequestModel: LoginRequestModel(
         email: emailController.text,
         password: passwordController.text,
       ),
     );
-    clearControllers();
+    if (result) {
+      clearControllers();
+    }
   }
 
   void clearControllers() {

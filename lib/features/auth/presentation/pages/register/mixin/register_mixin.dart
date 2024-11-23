@@ -24,7 +24,7 @@ mixin RegisterMixin on State<RegisterScreen> {
     BuildContext context, {
     required AuthNotifier notifier,
   }) async {
-    await notifier.handleRegister(
+    final result = await notifier.handleRegister(
       context,
       registerRequestModel: RegisterRequestModel(
         name: nameController.text,
@@ -32,7 +32,9 @@ mixin RegisterMixin on State<RegisterScreen> {
         password: passwordController.text,
       ),
     );
-    clearControllers();
+    if (result) {
+      clearControllers();
+    }
   }
 
   void clearControllers() {

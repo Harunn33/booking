@@ -38,7 +38,7 @@ class AuthNotifier extends AutoDisposeNotifier<AuthState> {
     state = state.copyWith(isRememberMe: value);
   }
 
-  Future<void> handleLogin(
+  Future<bool> handleLogin(
     BuildContext context, {
     required LoginRequestModel loginRequestModel,
   }) async {
@@ -66,6 +66,7 @@ class AuthNotifier extends AutoDisposeNotifier<AuthState> {
             context.router.replaceNamed(RoutePaths.instance.home),
           );
         }
+        return true;
       } on DioException catch (e) {
         context.showSnackBar(
           e.response?.statusMessage ?? '',
@@ -73,27 +74,30 @@ class AuthNotifier extends AutoDisposeNotifier<AuthState> {
       } finally {
         state = state.copyWith(isLoading: false);
       }
+      return false;
     }
+    return false;
   }
 
-  Future<void> handleRegister(
+  Future<bool> handleRegister(
     BuildContext context, {
     required RegisterRequestModel registerRequestModel,
   }) async {
     if (state.registerFormKey.currentState!.validate()) {
       state = state.copyWith(isLoading: true);
       try {
-        final resultLogin = await getIt<AuthRepository>().handleRegister(
+        final resultRegister = await getIt<AuthRepository>().handleRegister(
           context,
           endpoint:
               ApiConstants.instance.baseUrl + ApiConstants.instance.register,
           registerRequestModel: registerRequestModel,
         );
-        if (resultLogin.actionRegister.token.isNotEmpty) {
+        if (resultRegister.actionRegister.token.isNotEmpty) {
           unawaited(
             context.router.replaceNamed(RoutePaths.instance.home),
           );
         }
+        return true;
       } on DioException catch (e) {
         context.showSnackBar(
           e.response?.statusMessage ?? '',
@@ -101,7 +105,9 @@ class AuthNotifier extends AutoDisposeNotifier<AuthState> {
       } finally {
         state = state.copyWith(isLoading: false);
       }
+      return false;
     }
+    return false;
   }
 
   Future<void> localAuth(BuildContext context) async {

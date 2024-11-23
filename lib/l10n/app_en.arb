@@ -48,11 +48,11 @@
   "@fieldIsRequired": {
     "description": "Validation message for required fields"
   },
-  "invalidEmail": "Invalid email",
+  "invalidEmail": "Please enter a valid email address",
   "@invalidEmail": {
     "description": "Validation message for an invalid email address"
   },
-  "invalidPassword": "Invalid password",
+  "invalidPassword": "Invalid password. Password must be 6-20 characters long and contain only letters and numbers.",
   "@invalidPassword": {
     "description": "Validation message for an invalid password"
   },
