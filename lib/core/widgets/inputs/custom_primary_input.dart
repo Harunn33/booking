@@ -21,6 +21,7 @@ class CustomPrimaryInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final focusNode = FocusNode();
     final appColors = AppColors.instance;
     final appTextStyle = AppTextStyle.instance;
     return Column(
@@ -40,7 +41,8 @@ class CustomPrimaryInput extends StatelessWidget {
           ),
           controller: controller,
           textInputAction: textInputAction,
-          onTapOutside: (event) => FocusScope.of(context).unfocus(),
+          focusNode: focusNode,
+          onTapOutside: (event) => focusNode.unfocus(),
           cursorColor: appColors.majorelleBlue,
           obscureText: inputType == InputType.password,
           obscuringCharacter: '·',

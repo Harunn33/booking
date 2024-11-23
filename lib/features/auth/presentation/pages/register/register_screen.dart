@@ -31,7 +31,6 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
       appBar: AppBar(
         backgroundColor: AppColors.instance.white,
         elevation: 0,
-        automaticallyImplyLeading: false,
         actions: [
           Padding(
             padding: appPaddings.horizontal,

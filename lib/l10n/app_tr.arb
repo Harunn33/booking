@@ -107,5 +107,9 @@
   "buyNow": "Şimdi Satın Al",
   "@buyNow": {
     "description": "Şimdi satın al düğmesi etiketi"
+  },
+  "localAuthReason": "Bu uygulamayı kullanabilmek için lütfen giriş yapın",
+  "@localAuthReason": {
+    "description": "Yerel kimlik doğrulama nedeni"
   }
 }

@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:piton_test_case/core/constants/app_colors.dart';
 import 'package:piton_test_case/core/constants/app_paddings.dart';
 import 'package:piton_test_case/core/constants/app_strings.dart';
 import 'package:piton_test_case/core/constants/app_text_style.dart';
@@ -12,6 +13,7 @@ mixin LoginMixin on State<LoginScreen> {
   final appStrings = AppStrings.instance;
   final appPaddings = AppPaddings.instance;
   final appTextStyle = AppTextStyle.instance;
+  final appColors = AppColors.instance;
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();

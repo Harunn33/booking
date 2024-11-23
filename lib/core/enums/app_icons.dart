@@ -8,7 +8,9 @@ enum AppIcons {
   icSearch('ic_search'),
   icFilter('ic_filter'),
   icHeartOutlined('ic_heart_outlined'),
-  icHeartFilled('ic_heart_filled');
+  icHeartFilled('ic_heart_filled'),
+  icFingerprint('ic_fingerprint'),
+  icFaceId('ic_face_id');
 
   const AppIcons(this.value);
   final String value;

@@ -107,5 +107,9 @@
   "buyNow": "Buy Now",
   "@buyNow": {
     "description": "Label for the buy now button"
+  },
+  "localAuthReason": "Please login to access the app",
+  "@localAuthReason": {
+    "description": "Reason for requiring local authentication"
   }
 }

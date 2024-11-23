@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -104,6 +106,29 @@ class _LoginScreenState extends ConsumerState<LoginScreen> with LoginMixin {
                     onPressed: () => handleLogin(
                       context,
                       notifier: notifier,
+                    ),
+                  ),
+                  10.verticalSpace,
+                  Center(
+                    child: SizedBox(
+                      width: 80.w,
+                      height: 60.h,
+                      child: ElevatedButton(
+                        onPressed: state.isLoading
+                            ? null
+                            : () => notifier.localAuth(context),
+                        child: state.isLoading
+                            ? Center(
+                                child: CircularProgressIndicator(
+                                  color: AppColors.instance.majorelleBlue,
+                                ),
+                              )
+                            : Platform.isAndroid
+                                ? AppIcons.icFingerprint
+                                    .svgWithAttiributes(color: appColors.white)
+                                : AppIcons.icFaceId
+                                    .svgWithAttiributes(color: appColors.white),
+                      ),
                     ),
                   ),
                   36.verticalSpace,

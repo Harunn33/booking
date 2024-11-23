@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
+import 'package:local_auth/local_auth.dart';
 import 'package:piton_test_case/core/constants/api_constants.dart';
 import 'package:piton_test_case/core/enums/local_storage_key.dart';
 import 'package:piton_test_case/core/extensions/context_ext.dart';
@@ -100,6 +101,33 @@ class AuthNotifier extends AutoDisposeNotifier<AuthState> {
       } finally {
         state = state.copyWith(isLoading: false);
       }
+    }
+  }
+
+  Future<void> localAuth(BuildContext context) async {
+    final localAuth = LocalAuthentication();
+    state = state.copyWith(isLoading: true);
+    try {
+      final canAuth = await localAuth.canCheckBiometrics;
+      if (canAuth) {
+        final isAuth = await localAuth.authenticate(
+          localizedReason: context.l10n.localAuthReason,
+          options: const AuthenticationOptions(
+            biometricOnly: true,
+          ),
+        );
+        if (isAuth) {
+          unawaited(
+            context.router.replaceNamed(RoutePaths.instance.home),
+          );
+        }
+      }
+    } catch (e) {
+      context.showSnackBar(
+        e.toString(),
+      );
+    } finally {
+      state = state.copyWith(isLoading: false);
     }
   }
 }
