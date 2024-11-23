@@ -95,5 +95,17 @@
   "searchResults": "Search Results",
   "@searchResults": {
     "description": "Label for the search results"
+  },
+  "bookDetails": "Book Details",
+  "@bookDetails": {
+    "description": "Label for the book details"
+  },
+  "summary": "Summary",
+  "@summary": {
+    "description": "Label for the summary"
+  },
+  "buyNow": "Buy Now",
+  "@buyNow": {
+    "description": "Label for the buy now button"
   }
 }

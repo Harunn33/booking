@@ -7,7 +7,7 @@ import 'package:piton_test_case/core/extensions/padding_ext.dart';
 import 'package:piton_test_case/core/extensions/string_ext.dart';
 import 'package:piton_test_case/core/widgets/app_bar/general_app_bar.dart';
 import 'package:piton_test_case/core/widgets/inputs/custom_serach_input.dart';
-import 'package:piton_test_case/core/widgets/product_card/custom_vertical_product_car.dart';
+import 'package:piton_test_case/core/widgets/product_card/custom_vertical_product_card.dart';
 import 'package:piton_test_case/core/widgets/sliver_persistent_header/custom_sliver_persistent_header_delegate.dart';
 import 'package:piton_test_case/features/home/data/model/product/resp/product_response_model.dart';
 import 'package:piton_test_case/features/product/presentation/pages/view_all/mixin/view_all_mixin.dart';
@@ -42,16 +42,19 @@ class _ViewAllScreenState extends ConsumerState<ViewAllScreen>
         floatHeaderSlivers: true,
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
-            SliverPersistentHeader(
-              floating: true,
-              delegate: CustomSliverPersistentHeaderDelegate(
-                height: 50.h,
-                child: Padding(
-                  padding: appPaddings.horizontal,
-                  child: CustomSearchInput(
-                    searchController: state.searchController,
-                    hintText: context.l10n.search,
-                    onChanged: searchOnChanged,
+            SliverPadding(
+              padding: 24.padTop,
+              sliver: SliverPersistentHeader(
+                floating: true,
+                delegate: CustomSliverPersistentHeaderDelegate(
+                  height: 50.h,
+                  child: Padding(
+                    padding: appPaddings.horizontal,
+                    child: CustomSearchInput(
+                      searchController: state.searchController,
+                      hintText: context.l10n.search,
+                      onChanged: searchOnChanged,
+                    ),
                   ),
                 ),
               ),

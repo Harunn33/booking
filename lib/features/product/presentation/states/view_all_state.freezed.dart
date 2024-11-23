@@ -19,7 +19,6 @@ mixin _$ViewAllState {
   bool get isLoading => throw _privateConstructorUsedError;
   TextEditingController get searchController =>
       throw _privateConstructorUsedError;
-  List<Product> get products => throw _privateConstructorUsedError;
   List<Product> get searchedProducts => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -36,7 +35,6 @@ abstract class $ViewAllStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       TextEditingController searchController,
-      List<Product> products,
       List<Product> searchedProducts});
 }
 
@@ -55,7 +53,6 @@ class _$ViewAllStateCopyWithImpl<$Res, $Val extends ViewAllState>
   $Res call({
     Object? isLoading = null,
     Object? searchController = null,
-    Object? products = null,
     Object? searchedProducts = null,
   }) {
     return _then(_value.copyWith(
@@ -67,10 +64,6 @@ class _$ViewAllStateCopyWithImpl<$Res, $Val extends ViewAllState>
           ? _value.searchController
           : searchController // ignore: cast_nullable_to_non_nullable
               as TextEditingController,
-      products: null == products
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<Product>,
       searchedProducts: null == searchedProducts
           ? _value.searchedProducts
           : searchedProducts // ignore: cast_nullable_to_non_nullable
@@ -90,7 +83,6 @@ abstract class _$$ViewAllStateImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       TextEditingController searchController,
-      List<Product> products,
       List<Product> searchedProducts});
 }
 
@@ -107,7 +99,6 @@ class __$$ViewAllStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? searchController = null,
-    Object? products = null,
     Object? searchedProducts = null,
   }) {
     return _then(_$ViewAllStateImpl(
@@ -119,10 +110,6 @@ class __$$ViewAllStateImplCopyWithImpl<$Res>
           ? _value.searchController
           : searchController // ignore: cast_nullable_to_non_nullable
               as TextEditingController,
-      products: null == products
-          ? _value._products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<Product>,
       searchedProducts: null == searchedProducts
           ? _value._searchedProducts
           : searchedProducts // ignore: cast_nullable_to_non_nullable
@@ -137,23 +124,13 @@ class _$ViewAllStateImpl implements _ViewAllState {
   const _$ViewAllStateImpl(
       {required this.isLoading,
       required this.searchController,
-      required final List<Product> products,
       required final List<Product> searchedProducts})
-      : _products = products,
-        _searchedProducts = searchedProducts;
+      : _searchedProducts = searchedProducts;
 
   @override
   final bool isLoading;
   @override
   final TextEditingController searchController;
-  final List<Product> _products;
-  @override
-  List<Product> get products {
-    if (_products is EqualUnmodifiableListView) return _products;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_products);
-  }
-
   final List<Product> _searchedProducts;
   @override
   List<Product> get searchedProducts {
@@ -165,7 +142,7 @@ class _$ViewAllStateImpl implements _ViewAllState {
 
   @override
   String toString() {
-    return 'ViewAllState(isLoading: $isLoading, searchController: $searchController, products: $products, searchedProducts: $searchedProducts)';
+    return 'ViewAllState(isLoading: $isLoading, searchController: $searchController, searchedProducts: $searchedProducts)';
   }
 
   @override
@@ -177,17 +154,12 @@ class _$ViewAllStateImpl implements _ViewAllState {
                 other.isLoading == isLoading) &&
             (identical(other.searchController, searchController) ||
                 other.searchController == searchController) &&
-            const DeepCollectionEquality().equals(other._products, _products) &&
             const DeepCollectionEquality()
                 .equals(other._searchedProducts, _searchedProducts));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      isLoading,
-      searchController,
-      const DeepCollectionEquality().hash(_products),
+  int get hashCode => Object.hash(runtimeType, isLoading, searchController,
       const DeepCollectionEquality().hash(_searchedProducts));
 
   @JsonKey(ignore: true)
@@ -201,15 +173,12 @@ abstract class _ViewAllState implements ViewAllState {
   const factory _ViewAllState(
       {required final bool isLoading,
       required final TextEditingController searchController,
-      required final List<Product> products,
       required final List<Product> searchedProducts}) = _$ViewAllStateImpl;
 
   @override
   bool get isLoading;
   @override
   TextEditingController get searchController;
-  @override
-  List<Product> get products;
   @override
   List<Product> get searchedProducts;
   @override

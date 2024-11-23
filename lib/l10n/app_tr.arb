@@ -95,5 +95,17 @@
   "searchResults": "Arama Sonuçları",
   "@searchResults": {
     "description": "Arama sonuçları başlığı"
+  },
+  "bookDetails": "Kitap Detayları",
+  "@bookDetails": {
+    "description": "Kitap detayları başlığı"
+  },
+  "summary": "Özet",
+  "@summary": {
+    "description": "Özet başlığı"
+  },
+  "buyNow": "Şimdi Satın Al",
+  "@buyNow": {
+    "description": "Şimdi satın al düğmesi etiketi"
   }
 }

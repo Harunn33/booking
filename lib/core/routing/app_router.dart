@@ -6,6 +6,7 @@ import 'package:piton_test_case/features/auth/presentation/pages/register/regist
 import 'package:piton_test_case/features/auth/presentation/pages/splash/splash_screen.dart';
 import 'package:piton_test_case/features/home/data/model/product/resp/product_response_model.dart';
 import 'package:piton_test_case/features/home/presentation/pages/home_screen.dart';
+import 'package:piton_test_case/features/product/presentation/pages/product_detail/product_detail_screen.dart';
 import 'package:piton_test_case/features/product/presentation/pages/view_all/view_all_screen.dart';
 
 part 'app_router.gr.dart';
@@ -34,6 +35,10 @@ class AppRouter extends RootStackRouter {
         AutoRoute(
           path: RoutePaths.instance.viewAll,
           page: ViewAllRoute.page,
+        ),
+        AutoRoute(
+          path: RoutePaths.instance.productDetail,
+          page: ProductDetailRoute.page,
         ),
       ];
 }

@@ -48,6 +48,52 @@ class LoginRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [ProductDetailScreen]
+class ProductDetailRoute extends PageRouteInfo<ProductDetailRouteArgs> {
+  ProductDetailRoute({
+    required Product product,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ProductDetailRoute.name,
+          args: ProductDetailRouteArgs(
+            product: product,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ProductDetailRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ProductDetailRouteArgs>();
+      return ProductDetailScreen(
+        product: args.product,
+        key: args.key,
+      );
+    },
+  );
+}
+
+class ProductDetailRouteArgs {
+  const ProductDetailRouteArgs({
+    required this.product,
+    this.key,
+  });
+
+  final Product product;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ProductDetailRouteArgs{product: $product, key: $key}';
+  }
+}
+
+/// generated route for
 /// [RegisterScreen]
 class RegisterRoute extends PageRouteInfo<void> {
   const RegisterRoute({List<PageRouteInfo>? children})

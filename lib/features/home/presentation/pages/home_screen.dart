@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:piton_test_case/core/constants/app_colors.dart';
 import 'package:piton_test_case/core/constants/app_paddings.dart';
+import 'package:piton_test_case/core/enums/app_icons.dart';
 import 'package:piton_test_case/core/extensions/border_radius_ext.dart';
 import 'package:piton_test_case/core/extensions/context_ext.dart';
 import 'package:piton_test_case/core/extensions/padding_ext.dart';
@@ -32,7 +33,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> with HomeMixin {
   Widget build(BuildContext context) {
     final state = ref.watch(homeProvider);
     return Scaffold(
-      appBar: const GeneralAppBar(),
+      appBar: GeneralAppBar(
+        leading: Padding(
+          padding: appPaddings.horizontal,
+          child: AppIcons.icLogo.svg,
+        ),
+      ),
       body: RefreshIndicator(
         onRefresh: refreshPage,
         edgeOffset: (kToolbarHeight * 2) + 24.h,

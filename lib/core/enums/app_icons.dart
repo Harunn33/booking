@@ -6,7 +6,9 @@ enum AppIcons {
   icTrFlag('ic_tr_flag'),
   icUsFlag('ic_us_flag'),
   icSearch('ic_search'),
-  icFilter('ic_filter');
+  icFilter('ic_filter'),
+  icHeartOutlined('ic_heart_outlined'),
+  icHeartFilled('ic_heart_filled');
 
   const AppIcons(this.value);
   final String value;
