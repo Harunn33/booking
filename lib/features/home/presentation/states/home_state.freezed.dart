@@ -17,9 +17,12 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$HomeState {
   bool get isLoading => throw _privateConstructorUsedError;
+  TextEditingController get searchController =>
+      throw _privateConstructorUsedError;
   List<CategoryItemModel> get categories => throw _privateConstructorUsedError;
   CategoryItemModel? get selectedCategory => throw _privateConstructorUsedError;
   List<Product> get products => throw _privateConstructorUsedError;
+  List<Product> get searchedProducts => throw _privateConstructorUsedError;
   List<ProductResponseModel> get allProductsByCategory =>
       throw _privateConstructorUsedError;
 
@@ -35,9 +38,11 @@ abstract class $HomeStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isLoading,
+      TextEditingController searchController,
       List<CategoryItemModel> categories,
       CategoryItemModel? selectedCategory,
       List<Product> products,
+      List<Product> searchedProducts,
       List<ProductResponseModel> allProductsByCategory});
 
   $CategoryItemModelCopyWith<$Res>? get selectedCategory;
@@ -57,9 +62,11 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? searchController = null,
     Object? categories = null,
     Object? selectedCategory = freezed,
     Object? products = null,
+    Object? searchedProducts = null,
     Object? allProductsByCategory = null,
   }) {
     return _then(_value.copyWith(
@@ -67,6 +74,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      searchController: null == searchController
+          ? _value.searchController
+          : searchController // ignore: cast_nullable_to_non_nullable
+              as TextEditingController,
       categories: null == categories
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
@@ -78,6 +89,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
       products: null == products
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
+              as List<Product>,
+      searchedProducts: null == searchedProducts
+          ? _value.searchedProducts
+          : searchedProducts // ignore: cast_nullable_to_non_nullable
               as List<Product>,
       allProductsByCategory: null == allProductsByCategory
           ? _value.allProductsByCategory
@@ -109,9 +124,11 @@ abstract class _$$HomeStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {bool isLoading,
+      TextEditingController searchController,
       List<CategoryItemModel> categories,
       CategoryItemModel? selectedCategory,
       List<Product> products,
+      List<Product> searchedProducts,
       List<ProductResponseModel> allProductsByCategory});
 
   @override
@@ -130,9 +147,11 @@ class __$$HomeStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? searchController = null,
     Object? categories = null,
     Object? selectedCategory = freezed,
     Object? products = null,
+    Object? searchedProducts = null,
     Object? allProductsByCategory = null,
   }) {
     return _then(_$HomeStateImpl(
@@ -140,6 +159,10 @@ class __$$HomeStateImplCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      searchController: null == searchController
+          ? _value.searchController
+          : searchController // ignore: cast_nullable_to_non_nullable
+              as TextEditingController,
       categories: null == categories
           ? _value._categories
           : categories // ignore: cast_nullable_to_non_nullable
@@ -151,6 +174,10 @@ class __$$HomeStateImplCopyWithImpl<$Res>
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
+              as List<Product>,
+      searchedProducts: null == searchedProducts
+          ? _value._searchedProducts
+          : searchedProducts // ignore: cast_nullable_to_non_nullable
               as List<Product>,
       allProductsByCategory: null == allProductsByCategory
           ? _value._allProductsByCategory
@@ -165,16 +192,21 @@ class __$$HomeStateImplCopyWithImpl<$Res>
 class _$HomeStateImpl implements _HomeState {
   const _$HomeStateImpl(
       {required this.isLoading,
+      required this.searchController,
       required final List<CategoryItemModel> categories,
       required this.selectedCategory,
       required final List<Product> products,
+      required final List<Product> searchedProducts,
       required final List<ProductResponseModel> allProductsByCategory})
       : _categories = categories,
         _products = products,
+        _searchedProducts = searchedProducts,
         _allProductsByCategory = allProductsByCategory;
 
   @override
   final bool isLoading;
+  @override
+  final TextEditingController searchController;
   final List<CategoryItemModel> _categories;
   @override
   List<CategoryItemModel> get categories {
@@ -193,6 +225,15 @@ class _$HomeStateImpl implements _HomeState {
     return EqualUnmodifiableListView(_products);
   }
 
+  final List<Product> _searchedProducts;
+  @override
+  List<Product> get searchedProducts {
+    if (_searchedProducts is EqualUnmodifiableListView)
+      return _searchedProducts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_searchedProducts);
+  }
+
   final List<ProductResponseModel> _allProductsByCategory;
   @override
   List<ProductResponseModel> get allProductsByCategory {
@@ -204,7 +245,7 @@ class _$HomeStateImpl implements _HomeState {
 
   @override
   String toString() {
-    return 'HomeState(isLoading: $isLoading, categories: $categories, selectedCategory: $selectedCategory, products: $products, allProductsByCategory: $allProductsByCategory)';
+    return 'HomeState(isLoading: $isLoading, searchController: $searchController, categories: $categories, selectedCategory: $selectedCategory, products: $products, searchedProducts: $searchedProducts, allProductsByCategory: $allProductsByCategory)';
   }
 
   @override
@@ -214,11 +255,15 @@ class _$HomeStateImpl implements _HomeState {
             other is _$HomeStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
+            (identical(other.searchController, searchController) ||
+                other.searchController == searchController) &&
             const DeepCollectionEquality()
                 .equals(other._categories, _categories) &&
             (identical(other.selectedCategory, selectedCategory) ||
                 other.selectedCategory == selectedCategory) &&
             const DeepCollectionEquality().equals(other._products, _products) &&
+            const DeepCollectionEquality()
+                .equals(other._searchedProducts, _searchedProducts) &&
             const DeepCollectionEquality()
                 .equals(other._allProductsByCategory, _allProductsByCategory));
   }
@@ -227,9 +272,11 @@ class _$HomeStateImpl implements _HomeState {
   int get hashCode => Object.hash(
       runtimeType,
       isLoading,
+      searchController,
       const DeepCollectionEquality().hash(_categories),
       selectedCategory,
       const DeepCollectionEquality().hash(_products),
+      const DeepCollectionEquality().hash(_searchedProducts),
       const DeepCollectionEquality().hash(_allProductsByCategory));
 
   @JsonKey(ignore: true)
@@ -242,20 +289,26 @@ class _$HomeStateImpl implements _HomeState {
 abstract class _HomeState implements HomeState {
   const factory _HomeState(
           {required final bool isLoading,
+          required final TextEditingController searchController,
           required final List<CategoryItemModel> categories,
           required final CategoryItemModel? selectedCategory,
           required final List<Product> products,
+          required final List<Product> searchedProducts,
           required final List<ProductResponseModel> allProductsByCategory}) =
       _$HomeStateImpl;
 
   @override
   bool get isLoading;
   @override
+  TextEditingController get searchController;
+  @override
   List<CategoryItemModel> get categories;
   @override
   CategoryItemModel? get selectedCategory;
   @override
   List<Product> get products;
+  @override
+  List<Product> get searchedProducts;
   @override
   List<ProductResponseModel> get allProductsByCategory;
   @override

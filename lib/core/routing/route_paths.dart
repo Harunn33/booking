@@ -9,4 +9,5 @@ final class RoutePaths {
   final String login = '/login';
   final String register = '/register';
   final String home = '/home';
+  final String viewAll = '/viewAll';
 }

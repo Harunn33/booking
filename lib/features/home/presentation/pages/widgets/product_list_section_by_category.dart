@@ -4,9 +4,13 @@ class _ProductListSectionByCategory extends StatelessWidget {
   const _ProductListSectionByCategory({
     required this.categoryName,
     required this.products,
+    this.navigateToViewAll,
+    this.isSearchResults = false,
   });
   final String categoryName;
   final List<Product> products;
+  final VoidCallback? navigateToViewAll;
+  final bool isSearchResults;
 
   @override
   Widget build(BuildContext context) {
@@ -15,28 +19,33 @@ class _ProductListSectionByCategory extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: appPaddings.horizontal,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                categoryName,
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-              CustomTextButton(
-                text: context.l10n.viewAll,
-                onPressed: () {},
-                textStyle: Theme.of(context).textTheme.labelSmall?.copyWith(
-                      color: appColors.entanRed,
-                    ),
-              ),
-            ],
+        InkWell(
+          onTap: isSearchResults ? null : navigateToViewAll,
+          child: Padding(
+            padding: appPaddings.horizontal,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  categoryName,
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+                Visibility(
+                  visible: !isSearchResults,
+                  child: Text(
+                    context.l10n.viewAll,
+                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                          color: appColors.entanRed,
+                        ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
         12.verticalSpace,
         SizedBox(
-          height: 140.h,
+          height: 120.h,
           child: ListView.separated(
             padding: appPaddings.horizontal,
             scrollDirection: Axis.horizontal,

@@ -51,9 +51,7 @@ class MyApp extends ConsumerWidget {
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,
               locale: Locale(language.code),
-              routerConfig: GetIt.instance<AppRouter>().config(
-                  // reevaluateListenable: GetIt.I<AuthManager>(),
-                  ),
+              routerConfig: GetIt.instance<AppRouter>().config(),
             );
           },
         );

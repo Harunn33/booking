@@ -84,3 +84,55 @@ class SplashRoute extends PageRouteInfo<void> {
     },
   );
 }
+
+/// generated route for
+/// [ViewAllScreen]
+class ViewAllRoute extends PageRouteInfo<ViewAllRouteArgs> {
+  ViewAllRoute({
+    required List<Product> products,
+    required String pageTitle,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ViewAllRoute.name,
+          args: ViewAllRouteArgs(
+            products: products,
+            pageTitle: pageTitle,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ViewAllRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ViewAllRouteArgs>();
+      return ViewAllScreen(
+        products: args.products,
+        pageTitle: args.pageTitle,
+        key: args.key,
+      );
+    },
+  );
+}
+
+class ViewAllRouteArgs {
+  const ViewAllRouteArgs({
+    required this.products,
+    required this.pageTitle,
+    this.key,
+  });
+
+  final List<Product> products;
+
+  final String pageTitle;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ViewAllRouteArgs{products: $products, pageTitle: $pageTitle, key: $key}';
+  }
+}

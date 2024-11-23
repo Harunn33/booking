@@ -28,10 +28,10 @@ class HomeNotifier extends AutoDisposeNotifier<HomeState> {
 
   Future<void> _init() async {}
 
-  void selectCategory(
+  Future<void> selectCategory(
     BuildContext context, {
     required CategoryItemModel category,
-  }) {
+  }) async {
     if (state.selectedCategory?.id == category.id) return;
 
     state = state.copyWith(
@@ -42,8 +42,10 @@ class HomeNotifier extends AutoDisposeNotifier<HomeState> {
         },
       ).toList(),
     );
-
-    getProductsByCategoryId(context);
+    await getProductsByCategoryId(context);
+    if (state.searchController.text.isNotEmpty) {
+      await searchProduct(query: state.searchController.text);
+    }
   }
 
   void _updateCategoriesWithCache({
@@ -140,6 +142,7 @@ class HomeNotifier extends AutoDisposeNotifier<HomeState> {
   ) async {
     state = state.copyWith(isLoading: true);
     state = state.copyWith(allProductsByCategory: []);
+    state = state.copyWith(searchedProducts: []);
     try {
       final cachedProducts =
           await getIt<ProductCacheService>().getCachedProducts();
@@ -187,6 +190,9 @@ class HomeNotifier extends AutoDisposeNotifier<HomeState> {
       await getIt<ProductCacheService>().cacheProducts(
         allProductsByCategory: state.allProductsByCategory,
       );
+      if (state.searchController.text.isNotEmpty) {
+        await searchProduct(query: state.searchController.text);
+      }
     } on DioException catch (e) {
       context.showSnackBar(
         e.response?.statusMessage ?? '',
@@ -218,5 +224,33 @@ class HomeNotifier extends AutoDisposeNotifier<HomeState> {
       state = state.copyWith(isLoading: false);
     }
     return null;
+  }
+
+  Future<void> searchProduct({
+    required String query,
+  }) async {
+    state = state.copyWith(isLoading: true);
+    if (state.selectedCategory?.id == 0) {
+      final searchedProducts = state.allProductsByCategory
+          .expand((element) => element.product)
+          .where(
+            (element) => element.name.toLowerCase().contains(
+                  query.toLowerCase(),
+                ),
+          )
+          .toList();
+      state = state.copyWith(searchedProducts: searchedProducts);
+      state = state.copyWith(isLoading: false);
+      return;
+    }
+    final searchedProducts =
+        state.allProductsByCategory[state.selectedCategory!.id - 1].product
+            .where(
+              (element) =>
+                  element.name.toLowerCase().contains(query.toLowerCase()),
+            )
+            .toList();
+    state = state.copyWith(searchedProducts: searchedProducts);
+    state = state.copyWith(isLoading: false);
   }
 }

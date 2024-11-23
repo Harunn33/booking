@@ -87,5 +87,13 @@
   "viewAll": "View All",
   "@viewAll": {
     "description": "Label for the view all button"
+  },
+  "search": "Search",
+  "@search": {
+    "description": "Label for the search button"
+  },
+  "searchResults": "Search Results",
+  "@searchResults": {
+    "description": "Label for the search results"
   }
 }

@@ -8,10 +8,12 @@ import 'package:piton_test_case/features/language/presentation/pages/language_po
 
 class GeneralAppBar extends StatelessWidget implements PreferredSizeWidget {
   const GeneralAppBar({
+    this.pageTitle,
     super.key,
     this.leading,
   });
   final Widget? leading;
+  final String? pageTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class GeneralAppBar extends StatelessWidget implements PreferredSizeWidget {
           child: Row(
             children: [
               Text(
-                context.l10n.catalog,
+                pageTitle ?? context.l10n.catalog,
                 textAlign: TextAlign.right,
                 style: Theme.of(context).textTheme.titleLarge,
               ),

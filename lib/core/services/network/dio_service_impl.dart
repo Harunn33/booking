@@ -4,15 +4,15 @@ import 'package:piton_test_case/core/constants/api_constants.dart';
 
 part 'dio_service.dart';
 
-final class DioService implements IDioService {
-  DioService._() {
+final class DioServiceImpl implements DioService {
+  DioServiceImpl._() {
     _dio = Dio(_options)
       ..interceptors.add(
         LogInterceptor(),
       );
   }
 
-  static final instance = DioService._();
+  static final instance = DioServiceImpl._();
 
   static final _options = BaseOptions(
     baseUrl: ApiConstants.instance.baseUrl,

@@ -87,5 +87,13 @@
   "viewAll": "Tümünü Gör",
   "@viewAll": {
     "description": "Tümünü gör düğmesi etiketi"
+  },
+  "search": "Ara",
+  "@search": {
+    "description": "Ara düğmesi etiketi"
+  },
+  "searchResults": "Arama Sonuçları",
+  "@searchResults": {
+    "description": "Arama sonuçları başlığı"
   }
 }

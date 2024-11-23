@@ -1,9 +1,12 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
 import 'package:piton_test_case/core/routing/route_paths.dart';
 import 'package:piton_test_case/features/auth/presentation/pages/login/login_screen.dart';
 import 'package:piton_test_case/features/auth/presentation/pages/register/register_screen.dart';
 import 'package:piton_test_case/features/auth/presentation/pages/splash/splash_screen.dart';
+import 'package:piton_test_case/features/home/data/model/product/resp/product_response_model.dart';
 import 'package:piton_test_case/features/home/presentation/pages/home_screen.dart';
+import 'package:piton_test_case/features/product/presentation/pages/view_all/view_all_screen.dart';
 
 part 'app_router.gr.dart';
 
@@ -27,6 +30,10 @@ class AppRouter extends RootStackRouter {
         AutoRoute(
           path: RoutePaths.instance.home,
           page: HomeRoute.page,
+        ),
+        AutoRoute(
+          path: RoutePaths.instance.viewAll,
+          page: ViewAllRoute.page,
         ),
       ];
 }

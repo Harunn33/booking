@@ -33,6 +33,7 @@ dependencies:
   intl: ^0.19.0
   # Local Storage
   shared_preferences: ^2.3.3
+  async: ^2.11.0
 
 dev_dependencies:
   flutter_test:

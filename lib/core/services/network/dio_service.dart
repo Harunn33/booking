@@ -1,7 +1,7 @@
 part of 'dio_service_impl.dart';
 
 /// An interface for Dio
-abstract class IDioService {
+abstract class DioService {
   // GET request
   Future<Response<T>> get<T>(
     String url, {

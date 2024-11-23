@@ -17,11 +17,10 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<bool> isRememberMe() async {
-    final localStorageService = GetIt.instance<LocalStorageService>();
-    final rememberMe = localStorageService
-            .retrieveData<bool>(LocalStorageKey.isRememberMe.value) ??
+    final rememberMe = GetIt.instance<LocalStorageService>().retrieveData<bool>(
+          LocalStorageKey.isRememberMe.value,
+        ) ??
         false;
-
     return rememberMe;
   }
 

@@ -9,6 +9,7 @@ import 'package:piton_test_case/features/auth/data/repository/auth_repository_im
 import 'package:piton_test_case/features/auth/domain/repository/auth_repository.dart';
 import 'package:piton_test_case/features/home/data/repository/home_repository_impl.dart';
 import 'package:piton_test_case/features/home/domain/repository/home_repository.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final getIt = GetIt.I;
 
@@ -24,14 +25,20 @@ final class AppInitialization {
 
   static Future<void> _getItInit() async {
     GetIt.I.registerSingleton<AppRouter>(AppRouter());
-    GetIt.I.registerSingleton<DioService>(DioService.instance);
-    GetIt.I.registerSingleton<LocalStorageService>(
-        LocalStorageServiceImpl.instance);
+    GetIt.I.registerSingleton<DioServiceImpl>(DioServiceImpl.instance);
+    final sharedPreferences = await SharedPreferences.getInstance();
+
+    // LocalStorageService kaydı
+    getIt.registerSingleton<LocalStorageService>(
+      LocalStorageServiceImpl(sharedPreferences),
+    );
     GetIt.I.registerSingleton<AuthRepository>(
-      AuthRepositoryImpl(GetIt.I<DioService>()),
+      AuthRepositoryImpl(
+        GetIt.I<DioServiceImpl>(),
+      ),
     );
     GetIt.I.registerSingleton<HomeRepository>(
-      HomeRepositoryImpl(GetIt.I<DioService>()),
+      HomeRepositoryImpl(GetIt.I<DioServiceImpl>()),
     );
     GetIt.I.registerSingleton(
       CategoryCacheService(
@@ -43,10 +50,5 @@ final class AppInitialization {
         GetIt.I<LocalStorageService>(),
       ),
     );
-    // GetIt.I.registerSingletonAsync<LocalStorageService>(() async {
-    //   final service = LocalStorageServiceImpl.instance;
-    //   await service.init();
-    //   return service;
-    // });
   }
 }

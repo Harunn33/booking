@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get_it/get_it.dart';
 import 'package:piton_test_case/core/constants/api_constants.dart';
 import 'package:piton_test_case/core/enums/local_storage_key.dart';
 import 'package:piton_test_case/core/extensions/context_ext.dart';
@@ -51,11 +52,11 @@ class AuthNotifier extends AutoDisposeNotifier<AuthState> {
         if (resultLogin.actionLogin.token.isNotEmpty) {
           state = state.copyWith(token: resultLogin.actionLogin.token);
           if (state.isRememberMe) {
-            getIt<LocalStorageService>().saveData<bool>(
+            GetIt.instance<LocalStorageService>().saveData<bool>(
               LocalStorageKey.isRememberMe.value,
               state.isRememberMe,
             );
-            getIt<LocalStorageService>().saveData<String>(
+            GetIt.instance<LocalStorageService>().saveData<String>(
               LocalStorageKey.token.value,
               resultLogin.actionLogin.token,
             );
