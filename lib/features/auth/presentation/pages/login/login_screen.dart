@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:piton_test_case/core/constants/app_colors.dart';
+import 'package:piton_test_case/core/constants/app_text_style.dart';
 import 'package:piton_test_case/core/enums/app_icons.dart';
 import 'package:piton_test_case/core/enums/input_type.dart';
 import 'package:piton_test_case/core/extensions/context_ext.dart';
@@ -41,70 +42,73 @@ class _LoginScreenState extends ConsumerState<LoginScreen> with LoginMixin {
         ],
       ),
       body: SafeArea(
-        child: Form(
-          key: state.loginFormKey,
-          child: Padding(
-            padding: appPaddings.horizontal,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(
-                  child: AppIcons.icLogo.svgWithAttiributes(
-                    color: AppColors.instance.majorelleBlue,
-                    height: 65.h,
-                  ),
-                ),
-                const Spacer(),
-                Text(
-                  context.l10n.welcomeBack,
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: AppColors.instance.cosmicVoid.withOpacity(.6),
-                      ),
-                ),
-                10.verticalSpace,
-                Text(
-                  context.l10n.loginToYourAccount,
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-                const Spacer(),
-                CustomPrimaryInput(
-                  label: context.l10n.email,
-                  hintText: appStrings.hintEmail,
-                  controller: emailController,
-                  inputType: InputType.email,
-                ),
-                20.verticalSpace,
-                CustomPrimaryInput(
-                  label: context.l10n.password,
-                  hintText: appStrings.hintPassword,
-                  controller: passwordController,
-                  inputType: InputType.password,
-                ),
-                10.verticalSpace,
-                Row(
-                  children: [
-                    const _CustomCheckbox(),
-                    const Spacer(),
-                    CustomTextButton(
-                      text: context.l10n.register,
-                      textStyle: Theme.of(context).textTheme.labelSmall,
-                      onPressed: () => navigateToRegister(context),
+        child: SingleChildScrollView(
+          physics: const ClampingScrollPhysics(),
+          child: Form(
+            key: state.loginFormKey,
+            child: Padding(
+              padding: appPaddings.horizontal,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
+                    child: AppIcons.icLogo.svgWithAttiributes(
+                      color: AppColors.instance.majorelleBlue,
+                      height: 65.h,
                     ),
-                  ],
-                ),
-                const Spacer(
-                  flex: 3,
-                ),
-                CustomPrimaryButton(
-                  text: context.l10n.login,
-                  isLoading: state.isLoading,
-                  onPressed: () => handleLogin(
-                    context,
-                    notifier: notifier,
                   ),
-                ),
-              ],
+                  20.verticalSpace,
+                  Text(
+                    context.l10n.welcomeBack,
+                    style: appTextStyle.manropeSemiBold16.copyWith(
+                      color: AppColors.instance.cosmicVoid.withOpacity(.6),
+                    ),
+                  ),
+                  10.verticalSpace,
+                  Text(
+                    context.l10n.loginToYourAccount,
+                    style: appTextStyle.manropeBold20,
+                  ),
+                  20.verticalSpace,
+                  CustomPrimaryInput(
+                    label: context.l10n.email,
+                    hintText: appStrings.hintEmail,
+                    controller: emailController,
+                    inputType: InputType.email,
+                  ),
+                  20.verticalSpace,
+                  CustomPrimaryInput(
+                    label: context.l10n.password,
+                    hintText: appStrings.hintPassword,
+                    controller: passwordController,
+                    inputType: InputType.password,
+                    textInputAction: TextInputAction.done,
+                  ),
+                  10.verticalSpace,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const _CustomCheckbox(),
+                      CustomTextButton(
+                        text: context.l10n.register,
+                        textStyle: appTextStyle.manropeBold12,
+                        onPressed: () => navigateToRegister(context),
+                      ),
+                    ],
+                  ),
+                  60.verticalSpace,
+                  CustomPrimaryButton(
+                    text: context.l10n.login,
+                    isLoading: state.isLoading,
+                    onPressed: () => handleLogin(
+                      context,
+                      notifier: notifier,
+                    ),
+                  ),
+                  36.verticalSpace,
+                ],
+              ),
             ),
           ),
         ),

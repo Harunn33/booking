@@ -7,7 +7,8 @@ part of 'product_response_model.dart';
 // **************************************************************************
 
 _$ProductResponseModelImpl _$$ProductResponseModelImplFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     _$ProductResponseModelImpl(
       product: (json['product'] as List<dynamic>)
           .map((e) => Product.fromJson(e as Map<String, dynamic>))
@@ -15,7 +16,8 @@ _$ProductResponseModelImpl _$$ProductResponseModelImplFromJson(
     );
 
 Map<String, dynamic> _$$ProductResponseModelImplToJson(
-        _$ProductResponseModelImpl instance) =>
+  _$ProductResponseModelImpl instance,
+) =>
     <String, dynamic>{
       'product': instance.product,
     };
@@ -32,7 +34,8 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
       sales: (json['sales'] as num).toInt(),
       slug: json['slug'] as String,
       likesAggregate: LikesAggregate.fromJson(
-          json['likes_aggregate'] as Map<String, dynamic>),
+        json['likes_aggregate'] as Map<String, dynamic>,
+      ),
     );
 
 Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
@@ -55,7 +58,8 @@ _$LikesAggregateImpl _$$LikesAggregateImplFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$$LikesAggregateImplToJson(
-        _$LikesAggregateImpl instance) =>
+  _$LikesAggregateImpl instance,
+) =>
     <String, dynamic>{
       'aggregate': instance.aggregate,
     };

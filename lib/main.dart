@@ -11,7 +11,9 @@ import 'package:piton_test_case/features/language/data/repository/language_repos
 import 'package:piton_test_case/features/language/presentation/pages/enums/app_languages.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await AppInitialization.mainInit();
+
   final container = ProviderContainer();
   final language =
       await container.read(languageRepositoryProvider).getLanguage();
@@ -41,7 +43,6 @@ class MyApp extends ConsumerWidget {
         );
         return ScreenUtilInit(
           designSize: designSize,
-          minTextAdapt: true,
           splitScreenMode: true,
           builder: (context, _) {
             return MaterialApp.router(

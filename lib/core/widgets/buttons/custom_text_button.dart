@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:piton_test_case/core/constants/app_text_style.dart';
 
 class CustomTextButton extends StatelessWidget {
   const CustomTextButton({
@@ -17,7 +18,7 @@ class CustomTextButton extends StatelessWidget {
       onPressed: onPressed,
       child: Text(
         text,
-        style: textStyle ?? Theme.of(context).textTheme.titleMedium,
+        style: textStyle ?? AppTextStyle.instance.manropeSemiBold16,
       ),
     );
   }

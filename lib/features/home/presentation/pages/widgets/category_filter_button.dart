@@ -15,10 +15,11 @@ class _CategoryFilterButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final appPaddings = AppPaddings.instance;
     final appColors = AppColors.instance;
+    final appTextStyle = AppTextStyle.instance;
     return InkWell(
       onTap: onTap,
       child: Container(
-        height: 42.h,
+        height: 45.h,
         padding: appPaddings.generalSymetric,
         decoration: BoxDecoration(
           color: isSelected ? appColors.majorelleBlue : appColors.maWhite,
@@ -27,12 +28,10 @@ class _CategoryFilterButton extends StatelessWidget {
         child: Text(
           title,
           style: isSelected
-              ? Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: appColors.white,
-                  )
-              : Theme.of(context).textTheme.labelMedium?.copyWith(
-                    color: appColors.cosmicVoid.withOpacity(.4),
-                  ),
+              ? appTextStyle.manropeSemiBold16.copyWith(
+                  color: appColors.white,
+                )
+              : appTextStyle.manropeRegular16,
         ),
       ),
     );

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:piton_test_case/core/constants/app_paddings.dart';
 import 'package:piton_test_case/core/constants/app_strings.dart';
+import 'package:piton_test_case/core/constants/app_text_style.dart';
 import 'package:piton_test_case/core/routing/route_paths.dart';
 import 'package:piton_test_case/features/auth/data/model/login/req/login_request_model.dart';
 import 'package:piton_test_case/features/auth/presentation/pages/login/login_screen.dart';
@@ -10,6 +11,7 @@ import 'package:piton_test_case/features/auth/presentation/providers/auth_notifi
 mixin LoginMixin on State<LoginScreen> {
   final appStrings = AppStrings.instance;
   final appPaddings = AppPaddings.instance;
+  final appTextStyle = AppTextStyle.instance;
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();

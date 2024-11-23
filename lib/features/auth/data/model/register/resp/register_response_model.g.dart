@@ -7,26 +7,31 @@ part of 'register_response_model.dart';
 // **************************************************************************
 
 _$RegisterResponseModelImpl _$$RegisterResponseModelImplFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     _$RegisterResponseModelImpl(
       actionRegister: ActionRegisterModel.fromJson(
-          json['action_register'] as Map<String, dynamic>),
+        json['action_register'] as Map<String, dynamic>,
+      ),
     );
 
 Map<String, dynamic> _$$RegisterResponseModelImplToJson(
-        _$RegisterResponseModelImpl instance) =>
+  _$RegisterResponseModelImpl instance,
+) =>
     <String, dynamic>{
       'action_register': instance.actionRegister,
     };
 
 _$ActionRegisterModelImpl _$$ActionRegisterModelImplFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     _$ActionRegisterModelImpl(
       token: json['token'] as String,
     );
 
 Map<String, dynamic> _$$ActionRegisterModelImplToJson(
-        _$ActionRegisterModelImpl instance) =>
+  _$ActionRegisterModelImpl instance,
+) =>
     <String, dynamic>{
       'token': instance.token,
     };

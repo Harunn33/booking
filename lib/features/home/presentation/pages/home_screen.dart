@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:piton_test_case/core/constants/app_colors.dart';
 import 'package:piton_test_case/core/constants/app_paddings.dart';
+import 'package:piton_test_case/core/constants/app_text_style.dart';
 import 'package:piton_test_case/core/enums/app_icons.dart';
 import 'package:piton_test_case/core/extensions/border_radius_ext.dart';
 import 'package:piton_test_case/core/extensions/context_ext.dart';
@@ -58,7 +59,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> with HomeMixin {
                             final categories =
                                 ref.watch(homeProvider).categories;
                             return SizedBox(
-                              height: 42.h,
+                              height: 45.h,
                               child: ListView.separated(
                                 padding: appPaddings.horizontal,
                                 scrollDirection: Axis.horizontal,

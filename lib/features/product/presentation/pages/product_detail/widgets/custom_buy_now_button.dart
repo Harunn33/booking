@@ -12,6 +12,7 @@ class _CustomBuyNowButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appTextStyle = AppTextStyle.instance;
     return SizedBox(
       width: 1.sw,
       height: 60.h,
@@ -28,15 +29,15 @@ class _CustomBuyNowButton extends StatelessWidget {
                 children: [
                   Text(
                     '$price \$',
-                    style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                          color: AppColors.instance.white,
-                        ),
+                    style: appTextStyle.manropeBold16.copyWith(
+                      color: AppColors.instance.white,
+                    ),
                   ),
                   Text(
                     context.l10n.buyNow,
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          color: AppColors.instance.white,
-                        ),
+                    style: appTextStyle.manropeSemiBold16.copyWith(
+                      color: AppColors.instance.white,
+                    ),
                   ),
                 ],
               ),

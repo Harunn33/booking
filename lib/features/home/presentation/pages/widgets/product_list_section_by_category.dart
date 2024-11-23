@@ -16,6 +16,7 @@ class _ProductListSectionByCategory extends StatelessWidget {
   Widget build(BuildContext context) {
     final appPaddings = AppPaddings.instance;
     final appColors = AppColors.instance;
+    final appTextStyle = AppTextStyle.instance;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -28,15 +29,15 @@ class _ProductListSectionByCategory extends StatelessWidget {
               children: [
                 Text(
                   categoryName,
-                  style: Theme.of(context).textTheme.titleLarge,
+                  style: appTextStyle.manropeBold20,
                 ),
                 Visibility(
                   visible: !isSearchResults,
                   child: Text(
                     context.l10n.viewAll,
-                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                          color: appColors.entanRed,
-                        ),
+                    style: appTextStyle.manropeBold12.copyWith(
+                      color: appColors.entanRed,
+                    ),
                   ),
                 ),
               ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:piton_test_case/core/constants/app_colors.dart';
+import 'package:piton_test_case/core/constants/app_text_style.dart';
 
 class CustomPrimaryButton extends StatelessWidget {
   const CustomPrimaryButton({
@@ -28,9 +29,9 @@ class CustomPrimaryButton extends StatelessWidget {
               )
             : Text(
                 text,
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      color: AppColors.instance.white,
-                    ),
+                style: AppTextStyle.instance.manropeSemiBold16.copyWith(
+                  color: AppColors.instance.white,
+                ),
               ),
       ),
     );

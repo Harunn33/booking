@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:piton_test_case/core/cache/category_cache.dart';
 import 'package:piton_test_case/core/cache/product_cache.dart';
@@ -13,14 +14,18 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 final getIt = GetIt.I;
 
-/// Product initialization manager class
 @immutable
 final class AppInitialization {
   const AppInitialization._();
 
   static Future<void> mainInit() async {
     WidgetsFlutterBinding.ensureInitialized();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     _getItInit();
+    // Added in response to theme loading late
+    await Future.delayed(Durations.medium2);
   }
 
   static Future<void> _getItInit() async {
@@ -28,8 +33,7 @@ final class AppInitialization {
     GetIt.I.registerSingleton<DioServiceImpl>(DioServiceImpl.instance);
     final sharedPreferences = await SharedPreferences.getInstance();
 
-    // LocalStorageService kaydı
-    getIt.registerSingleton<LocalStorageService>(
+    GetIt.I.registerSingleton<LocalStorageService>(
       LocalStorageServiceImpl(sharedPreferences),
     );
     GetIt.I.registerSingleton<AuthRepository>(

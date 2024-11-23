@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:piton_test_case/core/constants/app_colors.dart';
 import 'package:piton_test_case/core/constants/app_paddings.dart';
+import 'package:piton_test_case/core/constants/app_text_style.dart';
 import 'package:piton_test_case/core/extensions/border_radius_ext.dart';
 import 'package:piton_test_case/core/extensions/padding_ext.dart';
 import 'package:piton_test_case/core/extensions/string_ext.dart';
@@ -21,6 +22,7 @@ class CustomVerticalProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final appColors = AppColors.instance;
     final appPaddings = AppPaddings.instance;
+    final appTextStyle = AppTextStyle.instance;
     return InkWell(
       onTap: () => navigateToDetail(
         context,
@@ -50,9 +52,9 @@ class CustomVerticalProductCard extends StatelessWidget {
                     product.name.capitalize(),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                          color: appColors.cosmicVoid,
-                        ),
+                    style: appTextStyle.manropeSemiBold12.copyWith(
+                      color: appColors.cosmicVoid,
+                    ),
                   ),
                   4.verticalSpace,
                   Row(
@@ -63,19 +65,16 @@ class CustomVerticalProductCard extends StatelessWidget {
                         child: Text(
                           product.author,
                           overflow: TextOverflow.ellipsis,
-                          style: Theme.of(context)
-                              .textTheme
-                              .displaySmall
-                              ?.copyWith(
-                                fontSize: 8.sp,
-                                color: appColors.cosmicVoid.withOpacity(.6),
-                              ),
+                          style: appTextStyle.manropeSemiBold10.copyWith(
+                            fontSize: 8.sp,
+                            color: appColors.cosmicVoid.withOpacity(.6),
+                          ),
                         ),
                       ),
                       Text(
                         '${product.price} \$',
                         overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.labelSmall,
+                        style: appTextStyle.manropeBold12,
                       ),
                     ],
                   ),

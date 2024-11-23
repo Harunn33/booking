@@ -1,90 +1,49 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:piton_test_case/core/constants/app_colors.dart';
 import 'package:piton_test_case/core/constants/app_paddings.dart';
-import 'package:piton_test_case/core/enums/app_fonts.dart';
+import 'package:piton_test_case/core/constants/app_text_style.dart';
 import 'package:piton_test_case/core/extensions/border_radius_ext.dart';
 
 final class CustomTheme {
   CustomTheme._();
+
+  static final _appColors = AppColors.instance;
+  static final _appPaddings = AppPaddings.instance;
 
   static final CustomTheme instance = CustomTheme._();
 
   final ThemeData lightTheme = ThemeData(
     appBarTheme: AppBarTheme(
       centerTitle: true,
-      backgroundColor: AppColors.instance.white,
+      backgroundColor: _appColors.white,
       elevation: 0,
       iconTheme: IconThemeData(
-        color: AppColors.instance.cosmicVoid,
+        color: _appColors.cosmicVoid,
       ),
       surfaceTintColor: Colors.transparent,
-      titleTextStyle: TextStyle(
-        fontFamily: AppFonts.manropeBold.value,
-        fontSize: 20.sp,
-        color: AppColors.instance.cosmicVoid,
-      ),
+      titleTextStyle: AppTextStyle.instance.manropeBold20,
     ),
     brightness: Brightness.light,
     colorScheme: ColorScheme.light(
-      primary: AppColors.instance.cosmicVoid,
+      primary: _appColors.cosmicVoid,
     ),
     splashFactory: NoSplash.splashFactory,
-    textTheme: TextTheme(
-      titleLarge: TextStyle(
-        fontFamily: AppFonts.manropeBold.value,
-        fontSize: 20.sp,
-        color: AppColors.instance.cosmicVoid,
-      ),
-      titleMedium: TextStyle(
-        fontFamily: AppFonts.manropeSemiBold.value,
-        fontSize: 16.sp,
-        color: AppColors.instance.majorelleBlue,
-      ),
-      titleSmall: TextStyle(
-        fontFamily: AppFonts.manropeSemiBold.value,
-        fontSize: 12.sp,
-        color: AppColors.instance.majorelleBlue,
-      ),
-      labelMedium: TextStyle(
-        fontFamily: AppFonts.manropeRegular.value,
-        fontSize: 16.sp,
-        color: AppColors.instance.cosmicVoid,
-      ),
-      labelSmall: TextStyle(
-        fontFamily: AppFonts.manropeBold.value,
-        fontSize: 12.sp,
-        color: AppColors.instance.majorelleBlue,
-      ),
-      displayMedium: TextStyle(
-        fontFamily: AppFonts.manropeBold.value,
-        fontSize: 16.sp,
-        color: AppColors.instance.majorelleBlue,
-      ),
-      displaySmall: TextStyle(
-        fontFamily: AppFonts.manropeSemiBold.value,
-        fontSize: 10.sp,
-        color: AppColors.instance.cosmicVoid,
-      ),
-    ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
-      hintStyle: TextStyle(
-        fontFamily: AppFonts.manropeRegular.value,
-        fontSize: 16.sp,
-        color: AppColors.instance.cosmicVoid.withOpacity(.4),
+      hintStyle: AppTextStyle.instance.manropeRegular16.copyWith(
+        color: _appColors.cosmicVoid.withOpacity(.4),
       ),
       border: OutlineInputBorder(
         borderRadius: 4.radiusAll,
         borderSide: BorderSide.none,
       ),
-      fillColor: AppColors.instance.maWhite,
+      fillColor: _appColors.maWhite,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        padding: AppPaddings.instance.generalSymetric,
-        backgroundColor: AppColors.instance.entanRed,
-        foregroundColor: AppColors.instance.white,
+        padding: _appPaddings.generalSymetric,
+        backgroundColor: _appColors.entanRed,
+        foregroundColor: _appColors.white,
         shape: RoundedRectangleBorder(
           borderRadius: 4.radiusAll,
         ),

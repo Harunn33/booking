@@ -1,7 +1,9 @@
 analyzer:
   errors:
     avoid_positional_boolean_parameters: ignore
+    inference_failure_on_instance_creation: ignore
     invalid_annotation_target: ignore
+    lines_longer_than_80_chars: ignore
     one_member_abstracts: ignore
     public_member_api_docs: ignore
     sort_constructors_first: ignore

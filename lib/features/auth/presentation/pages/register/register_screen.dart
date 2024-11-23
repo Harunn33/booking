@@ -40,75 +40,75 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
         ],
       ),
       body: SafeArea(
-        child: Form(
-          key: state.registerFormKey,
-          child: Padding(
-            padding: appPaddings.horizontal,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(
-                  child: AppIcons.icLogo.svgWithAttiributes(
-                    color: AppColors.instance.majorelleBlue,
-                    height: 65.h,
+        child: SingleChildScrollView(
+          physics: const ClampingScrollPhysics(),
+          child: Form(
+            key: state.registerFormKey,
+            child: Padding(
+              padding: appPaddings.horizontal,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
+                    child: AppIcons.icLogo.svgWithAttiributes(
+                      color: AppColors.instance.majorelleBlue,
+                      height: 65.h,
+                    ),
                   ),
-                ),
-                const Spacer(),
-                Text(
-                  context.l10n.welcome,
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: AppColors.instance.cosmicVoid.withOpacity(.6),
-                      ),
-                ),
-                10.verticalSpace,
-                Text(
-                  context.l10n.registerForAnAccount,
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-                const Spacer(),
-                CustomPrimaryInput(
-                  label: context.l10n.name,
-                  hintText: appStrings.hintName,
-                  controller: nameController,
-                ),
-                20.verticalSpace,
-                CustomPrimaryInput(
-                  label: context.l10n.email,
-                  hintText: appStrings.hintEmail,
-                  controller: emailController,
-                  inputType: InputType.email,
-                ),
-                20.verticalSpace,
-                CustomPrimaryInput(
-                  label: context.l10n.password,
-                  hintText: appStrings.hintPassword,
-                  controller: passwordController,
-                  inputType: InputType.password,
-                ),
-                10.verticalSpace,
-                Row(
-                  children: [
-                    const Spacer(),
-                    CustomTextButton(
+                  20.verticalSpace,
+                  Text(
+                    context.l10n.welcome,
+                    style: appTextStyle.manropeSemiBold16.copyWith(
+                      color: AppColors.instance.cosmicVoid.withOpacity(.6),
+                    ),
+                  ),
+                  10.verticalSpace,
+                  Text(
+                    context.l10n.registerForAnAccount,
+                    style: appTextStyle.manropeBold20,
+                  ),
+                  20.verticalSpace,
+                  CustomPrimaryInput(
+                    label: context.l10n.name,
+                    hintText: appStrings.hintName,
+                    controller: nameController,
+                  ),
+                  20.verticalSpace,
+                  CustomPrimaryInput(
+                    label: context.l10n.email,
+                    hintText: appStrings.hintEmail,
+                    controller: emailController,
+                    inputType: InputType.email,
+                  ),
+                  20.verticalSpace,
+                  CustomPrimaryInput(
+                    label: context.l10n.password,
+                    hintText: appStrings.hintPassword,
+                    controller: passwordController,
+                    inputType: InputType.password,
+                  ),
+                  10.verticalSpace,
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: CustomTextButton(
                       text: context.l10n.login,
-                      textStyle: Theme.of(context).textTheme.labelSmall,
+                      textStyle: appTextStyle.manropeBold12,
                       onPressed: () => navigateToLogin(context),
                     ),
-                  ],
-                ),
-                const Spacer(
-                  flex: 3,
-                ),
-                CustomPrimaryButton(
-                  text: context.l10n.register,
-                  isLoading: state.isLoading,
-                  onPressed: () => handleRegister(
-                    context,
-                    notifier: notifier,
                   ),
-                ),
-              ],
+                  60.verticalSpace,
+                  CustomPrimaryButton(
+                    text: context.l10n.register,
+                    isLoading: state.isLoading,
+                    onPressed: () => handleRegister(
+                      context,
+                      notifier: notifier,
+                    ),
+                  ),
+                  36.verticalSpace,
+                ],
+              ),
             ),
           ),
         ),

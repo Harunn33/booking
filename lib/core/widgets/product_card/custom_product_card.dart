@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:piton_test_case/core/constants/app_colors.dart';
+import 'package:piton_test_case/core/constants/app_text_style.dart';
 import 'package:piton_test_case/core/extensions/border_radius_ext.dart';
 import 'package:piton_test_case/core/extensions/padding_ext.dart';
 import 'package:piton_test_case/core/extensions/string_ext.dart';
@@ -20,6 +21,7 @@ class CustomProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appColors = AppColors.instance;
+    final appTextStyle = AppTextStyle.instance;
     return InkWell(
       onTap: () => navigateToDetail(
         context,
@@ -51,28 +53,24 @@ class CustomProductCard extends StatelessWidget {
                           product.name.capitalize(),
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
-                          style:
-                              Theme.of(context).textTheme.titleSmall?.copyWith(
-                                    color: AppColors.instance.cosmicVoid,
-                                  ),
+                          style: appTextStyle.manropeSemiBold12.copyWith(
+                            color: AppColors.instance.cosmicVoid,
+                          ),
                         ),
                         8.verticalSpace,
                         Text(
                           product.author,
                           overflow: TextOverflow.ellipsis,
-                          style: Theme.of(context)
-                              .textTheme
-                              .displaySmall
-                              ?.copyWith(
-                                color: appColors.cosmicVoid.withOpacity(.6),
-                              ),
+                          style: appTextStyle.manropeSemiBold10.copyWith(
+                            color: appColors.cosmicVoid.withOpacity(.6),
+                          ),
                         ),
                       ],
                     ),
                     Text(
                       '${product.price} \$',
                       overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.displayMedium,
+                      style: appTextStyle.manropeBold16,
                     ),
                   ],
                 ),

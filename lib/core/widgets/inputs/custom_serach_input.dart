@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:piton_test_case/core/constants/app_colors.dart';
+import 'package:piton_test_case/core/constants/app_text_style.dart';
 import 'package:piton_test_case/core/enums/app_icons.dart';
 import 'package:piton_test_case/core/extensions/padding_ext.dart';
 
@@ -17,15 +18,15 @@ class CustomSearchInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final focusNode = FocusNode();
     final appColors = AppColors.instance;
     return TextFormField(
       controller: searchController,
       onChanged: onChanged,
-      onTapOutside: (event) => FocusScope.of(context).unfocus(),
+      onTapOutside: (event) => focusNode.unfocus(),
+      focusNode: focusNode,
       cursorColor: appColors.majorelleBlue,
-      style: Theme.of(context).textTheme.labelMedium?.copyWith(
-            color: appColors.cosmicVoid.withOpacity(.4),
-          ),
+      style: AppTextStyle.instance.manropeRegular16,
       decoration: InputDecoration(
         contentPadding: 10.padAll,
         prefixIconConstraints: BoxConstraints(

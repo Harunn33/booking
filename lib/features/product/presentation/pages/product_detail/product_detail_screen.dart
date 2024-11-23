@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:piton_test_case/core/constants/app_colors.dart';
+import 'package:piton_test_case/core/constants/app_text_style.dart';
 import 'package:piton_test_case/core/enums/app_icons.dart';
 import 'package:piton_test_case/core/extensions/context_ext.dart';
 import 'package:piton_test_case/core/extensions/padding_ext.dart';
 import 'package:piton_test_case/core/widgets/app_bar/general_app_bar.dart';
 import 'package:piton_test_case/core/widgets/cached_network_image/custom_cached_network_image.dart';
+import 'package:piton_test_case/core/widgets/sliver_persistent_header/custom_sliver_persistent_header_delegate.dart';
 import 'package:piton_test_case/features/home/data/model/product/resp/product_response_model.dart';
 import 'package:piton_test_case/features/product/presentation/pages/product_detail/mixin/product_detail_mixin.dart';
 import 'package:piton_test_case/features/product/presentation/providers/product_detail_notifier.dart';
@@ -37,70 +39,75 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen>
       appBar: GeneralAppBar(
         pageTitle: context.l10n.bookDetails,
       ),
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            expandedHeight: 320.h,
-            collapsedHeight: 70.h,
-            pinned: true,
-            automaticallyImplyLeading: false,
-            actions: [
-              InkWell(
-                onTap: notifier.favoriteProduct,
-                child: Container(
-                  width: 44.w,
-                  height: 44.h,
-                  margin: appPaddings.horizontal,
-                  padding: 10.padAll,
-                  decoration: BoxDecoration(
-                    color: appColors.maWhite,
-                    shape: BoxShape.circle,
+      body: Stack(
+        children: [
+          CustomScrollView(
+            slivers: [
+              SliverPersistentHeader(
+                floating: true,
+                delegate: CustomSliverPersistentHeaderDelegate(
+                  height: 330.h,
+                  child: Center(
+                    child: Column(
+                      children: [
+                        CustomCachedNetworkImage(
+                          imageUrl: widget.product.cover,
+                          width: 150,
+                          height: 225,
+                        ),
+                        _buildNameAndAuthor(context),
+                      ],
+                    ),
                   ),
-                  child: state.isFavorite
-                      ? AppIcons.icHeartFilled.svg
-                      : AppIcons.icHeartOutlined.svg,
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: appPaddings.horizontal,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        context.l10n.summary,
+                        style: appTextStyle.manropeBold20,
+                      ),
+                      Text(
+                        widget.product.description,
+                        style: appTextStyle.manropeRegular16.copyWith(
+                          color: appColors.cosmicVoid.withOpacity(.6),
+                        ),
+                      ),
+                      kBottomNavigationBarHeight.verticalSpace,
+                    ],
+                  ),
                 ),
               ),
             ],
-            flexibleSpace: FlexibleSpaceBar(
-              background: Column(
-                children: [
-                  CustomCachedNetworkImage(
-                    imageUrl: widget.product.cover,
-                    width: 150,
-                    height: 225,
-                  ),
-                  _buildNameAndAuthor(context),
-                ],
-              ),
-              title: _buildNameAndAuthor(context),
-            ),
           ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: appPaddings.horizontal,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    context.l10n.summary,
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                  Text(
-                    widget.product.description,
-                    style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                          color: appColors.cosmicVoid.withOpacity(.6),
-                        ),
-                  ),
-                  kBottomNavigationBarHeight.verticalSpace,
-                ],
+          Positioned(
+            right: 0,
+            top: appPaddings.vertical.top.h,
+            child: InkWell(
+              onTap: notifier.favoriteProduct,
+              child: Container(
+                width: 44.w,
+                height: 44.h,
+                margin: appPaddings.horizontal,
+                padding: 10.padAll,
+                decoration: BoxDecoration(
+                  color: appColors.maWhite,
+                  shape: BoxShape.circle,
+                ),
+                child: state.isFavorite
+                    ? AppIcons.icHeartFilled.svg
+                    : AppIcons.icHeartOutlined.svg,
               ),
             ),
           ),
         ],
       ),
       bottomNavigationBar: Container(
-        padding: appPaddings.horizontal + kBottomNavigationBarHeight.padBottom,
+        padding: appPaddings.horizontal + 12.padBottom,
         child: _CustomBuyNowButton(
           price: widget.product.price,
           isLoading: state.isLoading,
@@ -116,15 +123,15 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen>
         Text(
           widget.product.name,
           overflow: TextOverflow.ellipsis,
-          style: Theme.of(context).textTheme.titleLarge,
+          style: appTextStyle.manropeBold20,
         ),
         4.verticalSpace,
         Text(
           widget.product.author,
           overflow: TextOverflow.ellipsis,
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                color: appColors.cosmicVoid.withOpacity(.6),
-              ),
+          style: appTextStyle.manropeSemiBold16.copyWith(
+            color: appColors.cosmicVoid.withOpacity(.6),
+          ),
         ),
       ],
     );

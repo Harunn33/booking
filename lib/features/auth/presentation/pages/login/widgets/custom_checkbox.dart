@@ -31,7 +31,7 @@ class __CustomCheckboxState extends ConsumerState<_CustomCheckbox> {
         ),
         Text(
           context.l10n.rememberMe,
-          style: Theme.of(context).textTheme.labelSmall,
+          style: AppTextStyle.instance.manropeBold12,
         ),
       ],
     );

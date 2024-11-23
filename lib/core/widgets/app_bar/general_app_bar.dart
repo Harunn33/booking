@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:piton_test_case/core/constants/app_colors.dart';
 import 'package:piton_test_case/core/constants/app_paddings.dart';
+import 'package:piton_test_case/core/constants/app_text_style.dart';
 import 'package:piton_test_case/core/extensions/context_ext.dart';
 import 'package:piton_test_case/features/language/presentation/pages/language_popup_menu.dart';
 
@@ -18,6 +19,7 @@ class GeneralAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     final appPaddings = AppPaddings.instance;
     final appColors = AppColors.instance;
+    final appTextStyle = AppTextStyle.instance;
     return AppBar(
       leadingWidth: .2.sw,
       leading: leading,
@@ -36,7 +38,7 @@ class GeneralAppBar extends StatelessWidget implements PreferredSizeWidget {
               Text(
                 pageTitle ?? context.l10n.catalog,
                 textAlign: TextAlign.right,
-                style: Theme.of(context).textTheme.titleLarge,
+                style: appTextStyle.manropeBold20,
               ),
               12.horizontalSpace,
               const LanguagePopupMenu(),
