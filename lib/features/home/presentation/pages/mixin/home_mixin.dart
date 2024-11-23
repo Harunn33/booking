@@ -45,7 +45,7 @@ mixin HomeMixin on ConsumerState<HomeScreen> {
   }
 
   Future<void> refreshPage() async {
-    await getIt<ProductCacheService>().clearCache();
+    getIt<ProductCacheService>().clearCache();
 
     await ref.read(homeProvider.notifier).getAllProductByCategory(context);
   }

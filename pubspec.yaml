@@ -42,6 +42,9 @@ dev_dependencies:
   very_good_analysis: ^6.0.0
   auto_route_generator: ^9.0.0
   build_runner: ^2.4.11
+  # Testing
+  mockito: ^5.4.4
+  riverpod_test: ^0.1.6
 
 flutter:
   generate: true

@@ -22,9 +22,11 @@ final class AppInitialization {
     _getItInit();
   }
 
-  static void _getItInit() {
+  static Future<void> _getItInit() async {
     GetIt.I.registerSingleton<AppRouter>(AppRouter());
     GetIt.I.registerSingleton<DioService>(DioService.instance);
+    GetIt.I.registerSingleton<LocalStorageService>(
+        LocalStorageServiceImpl.instance);
     GetIt.I.registerSingleton<AuthRepository>(
       AuthRepositoryImpl(GetIt.I<DioService>()),
     );
@@ -32,15 +34,19 @@ final class AppInitialization {
       HomeRepositoryImpl(GetIt.I<DioService>()),
     );
     GetIt.I.registerSingleton(
-      CategoryCacheService(),
+      CategoryCacheService(
+        GetIt.I<LocalStorageService>(),
+      ),
     );
     GetIt.I.registerSingleton(
-      ProductCacheService(),
+      ProductCacheService(
+        GetIt.I<LocalStorageService>(),
+      ),
     );
-    GetIt.I.registerSingletonAsync<LocalStorageService>(() async {
-      final service = LocalStorageServiceImpl.instance;
-      await service.init();
-      return service;
-    });
+    // GetIt.I.registerSingletonAsync<LocalStorageService>(() async {
+    //   final service = LocalStorageServiceImpl.instance;
+    //   await service.init();
+    //   return service;
+    // });
   }
 }
