@@ -111,5 +111,13 @@
   "localAuthReason": "Please login to access the app",
   "@localAuthReason": {
     "description": "Reason for requiring local authentication"
+  },
+  "successLike": "You liked this book",
+  "@successLike": {
+    "description": "Success message for liking a book"
+  },
+  "successUnlike": "You unliked this book",
+  "@successUnlike": {
+    "description": "Success message for unliking a book"
   }
 }

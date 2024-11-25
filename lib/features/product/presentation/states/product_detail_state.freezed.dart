@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ProductDetailState {
   bool get isLoading => throw _privateConstructorUsedError;
-  bool get isFavorite => throw _privateConstructorUsedError;
+  bool get isLike => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductDetailStateCopyWith<ProductDetailState> get copyWith =>
@@ -30,7 +30,7 @@ abstract class $ProductDetailStateCopyWith<$Res> {
           ProductDetailState value, $Res Function(ProductDetailState) then) =
       _$ProductDetailStateCopyWithImpl<$Res, ProductDetailState>;
   @useResult
-  $Res call({bool isLoading, bool isFavorite});
+  $Res call({bool isLoading, bool isLike});
 }
 
 /// @nodoc
@@ -47,16 +47,16 @@ class _$ProductDetailStateCopyWithImpl<$Res, $Val extends ProductDetailState>
   @override
   $Res call({
     Object? isLoading = null,
-    Object? isFavorite = null,
+    Object? isLike = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      isFavorite: null == isFavorite
-          ? _value.isFavorite
-          : isFavorite // ignore: cast_nullable_to_non_nullable
+      isLike: null == isLike
+          ? _value.isLike
+          : isLike // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -70,7 +70,7 @@ abstract class _$$ProductDetailStateImplCopyWith<$Res>
       __$$ProductDetailStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoading, bool isFavorite});
+  $Res call({bool isLoading, bool isLike});
 }
 
 /// @nodoc
@@ -85,16 +85,16 @@ class __$$ProductDetailStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = null,
-    Object? isFavorite = null,
+    Object? isLike = null,
   }) {
     return _then(_$ProductDetailStateImpl(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      isFavorite: null == isFavorite
-          ? _value.isFavorite
-          : isFavorite // ignore: cast_nullable_to_non_nullable
+      isLike: null == isLike
+          ? _value.isLike
+          : isLike // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -104,16 +104,16 @@ class __$$ProductDetailStateImplCopyWithImpl<$Res>
 
 class _$ProductDetailStateImpl implements _ProductDetailState {
   const _$ProductDetailStateImpl(
-      {required this.isLoading, required this.isFavorite});
+      {required this.isLoading, required this.isLike});
 
   @override
   final bool isLoading;
   @override
-  final bool isFavorite;
+  final bool isLike;
 
   @override
   String toString() {
-    return 'ProductDetailState(isLoading: $isLoading, isFavorite: $isFavorite)';
+    return 'ProductDetailState(isLoading: $isLoading, isLike: $isLike)';
   }
 
   @override
@@ -123,12 +123,11 @@ class _$ProductDetailStateImpl implements _ProductDetailState {
             other is _$ProductDetailStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            (identical(other.isFavorite, isFavorite) ||
-                other.isFavorite == isFavorite));
+            (identical(other.isLike, isLike) || other.isLike == isLike));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, isFavorite);
+  int get hashCode => Object.hash(runtimeType, isLoading, isLike);
 
   @JsonKey(ignore: true)
   @override
@@ -141,12 +140,12 @@ class _$ProductDetailStateImpl implements _ProductDetailState {
 abstract class _ProductDetailState implements ProductDetailState {
   const factory _ProductDetailState(
       {required final bool isLoading,
-      required final bool isFavorite}) = _$ProductDetailStateImpl;
+      required final bool isLike}) = _$ProductDetailStateImpl;
 
   @override
   bool get isLoading;
   @override
-  bool get isFavorite;
+  bool get isLike;
   @override
   @JsonKey(ignore: true)
   _$$ProductDetailStateImplCopyWith<_$ProductDetailStateImpl> get copyWith =>

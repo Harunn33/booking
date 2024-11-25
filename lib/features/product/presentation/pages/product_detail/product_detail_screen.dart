@@ -88,7 +88,10 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen>
             right: 0,
             top: appPaddings.vertical.top.h,
             child: InkWell(
-              onTap: notifier.favoriteProduct,
+              onTap: () => notifier.likeProduct(
+                context,
+                productId: widget.product.id,
+              ),
               child: Container(
                 width: 44.w,
                 height: 44.h,
@@ -98,7 +101,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen>
                   color: appColors.maWhite,
                   shape: BoxShape.circle,
                 ),
-                child: state.isFavorite
+                child: state.isLike
                     ? AppIcons.icHeartFilled.svg
                     : AppIcons.icHeartOutlined.svg,
               ),
@@ -110,7 +113,6 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen>
         padding: appPaddings.horizontal + 12.padBottom,
         child: _CustomBuyNowButton(
           price: widget.product.price,
-          isLoading: state.isLoading,
           onPressed: () {},
         ),
       ),

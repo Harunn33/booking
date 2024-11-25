@@ -7,8 +7,7 @@ part of 'category_response_model.dart';
 // **************************************************************************
 
 _$CategoryResponseModelImpl _$$CategoryResponseModelImplFromJson(
-  Map<String, dynamic> json,
-) =>
+        Map<String, dynamic> json) =>
     _$CategoryResponseModelImpl(
       category: (json['category'] as List<dynamic>)
           .map((e) => CategoryItemModel.fromJson(e as Map<String, dynamic>))
@@ -16,15 +15,13 @@ _$CategoryResponseModelImpl _$$CategoryResponseModelImplFromJson(
     );
 
 Map<String, dynamic> _$$CategoryResponseModelImplToJson(
-  _$CategoryResponseModelImpl instance,
-) =>
+        _$CategoryResponseModelImpl instance) =>
     <String, dynamic>{
       'category': instance.category,
     };
 
 _$CategoryItemModelImpl _$$CategoryItemModelImplFromJson(
-  Map<String, dynamic> json,
-) =>
+        Map<String, dynamic> json) =>
     _$CategoryItemModelImpl(
       id: (json['id'] as num).toInt(),
       name: json['name'] as String,
@@ -33,8 +30,7 @@ _$CategoryItemModelImpl _$$CategoryItemModelImplFromJson(
     );
 
 Map<String, dynamic> _$$CategoryItemModelImplToJson(
-  _$CategoryItemModelImpl instance,
-) =>
+        _$CategoryItemModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

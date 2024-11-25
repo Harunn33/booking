@@ -6,11 +6,11 @@ part 'product_detail_state.freezed.dart';
 class ProductDetailState with _$ProductDetailState {
   const factory ProductDetailState({
     required bool isLoading,
-    required bool isFavorite,
+    required bool isLike,
   }) = _ProductDetailState;
 
   factory ProductDetailState.initial() => const ProductDetailState(
         isLoading: false,
-        isFavorite: false,
+        isLike: false,
       );
 }

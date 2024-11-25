@@ -111,5 +111,13 @@
   "localAuthReason": "Bu uygulamayı kullanabilmek için lütfen giriş yapın",
   "@localAuthReason": {
     "description": "Yerel kimlik doğrulama nedeni"
+  },
+  "successLike": "Beğenildi",
+  "@successLike": {
+    "description": "Beğenme işlemi başarılı olduğunda gösterilen mesaj"
+  },
+  "successUnlike": "Beğeni kaldırıldı",
+  "@successUnlike": {
+    "description": "Beğenmekten vazgeçme işlemi başarılı olduğunda gösterilen mesaj"
   }
 }

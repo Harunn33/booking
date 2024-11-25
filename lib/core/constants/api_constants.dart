@@ -10,4 +10,6 @@ final class ApiConstants {
   final categories = 'categories';
   final products = 'products';
   final coverImage = 'cover_image';
+  final like = 'like';
+  final unlike = 'unlike';
 }

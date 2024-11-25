@@ -10,6 +10,8 @@ import 'package:piton_test_case/features/auth/data/repository/auth_repository_im
 import 'package:piton_test_case/features/auth/domain/repository/auth_repository.dart';
 import 'package:piton_test_case/features/home/data/repository/home_repository_impl.dart';
 import 'package:piton_test_case/features/home/domain/repository/home_repository.dart';
+import 'package:piton_test_case/features/product/data/repository/product_repository_impl.dart';
+import 'package:piton_test_case/features/product/domain/repository/product_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final getIt = GetIt.I;
@@ -43,6 +45,9 @@ final class AppInitialization {
     );
     GetIt.I.registerSingleton<HomeRepository>(
       HomeRepositoryImpl(GetIt.I<DioServiceImpl>()),
+    );
+    GetIt.I.registerSingleton<ProductRepository>(
+      ProductRepositoryImpl(GetIt.I<DioServiceImpl>()),
     );
     GetIt.I.registerSingleton(
       CategoryCacheService(
