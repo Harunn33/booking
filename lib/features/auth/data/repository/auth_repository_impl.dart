@@ -16,12 +16,12 @@ class AuthRepositoryImpl implements AuthRepository {
   late final DioService dioService;
 
   @override
-  Future<bool> isRememberMe() async {
-    final rememberMe = GetIt.instance<LocalStorageService>().retrieveData<bool>(
-          LocalStorageKey.isRememberMe.value,
+  Future<String> isRememberMe() async {
+    final token = GetIt.instance<LocalStorageService>().retrieveData<String>(
+          LocalStorageKey.token.value,
         ) ??
-        false;
-    return rememberMe;
+        '';
+    return token;
   }
 
   @override

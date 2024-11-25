@@ -5,7 +5,7 @@ import 'package:piton_test_case/features/auth/data/model/register/req/register_r
 import 'package:piton_test_case/features/auth/data/model/register/resp/register_response_model.dart';
 
 abstract class AuthRepository {
-  Future<bool> isRememberMe();
+  Future<String> isRememberMe();
   Future<LoginResponseModel> handleLogin(
     BuildContext context, {
     required String endpoint,

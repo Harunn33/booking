@@ -53,10 +53,6 @@ class AuthNotifier extends AutoDisposeNotifier<AuthState> {
         if (resultLogin.actionLogin.token.isNotEmpty) {
           state = state.copyWith(token: resultLogin.actionLogin.token);
           if (state.isRememberMe) {
-            GetIt.instance<LocalStorageService>().saveData<bool>(
-              LocalStorageKey.isRememberMe.value,
-              state.isRememberMe,
-            );
             GetIt.instance<LocalStorageService>().saveData<String>(
               LocalStorageKey.token.value,
               resultLogin.actionLogin.token,

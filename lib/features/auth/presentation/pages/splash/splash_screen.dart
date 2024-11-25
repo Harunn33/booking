@@ -32,10 +32,12 @@ class SplashScreenState extends State<SplashScreen> with SplashMixin {
             const Spacer(),
             CustomPrimaryButton(
               text: context.l10n.login,
-              onPressed: navigateToLogin,
+              onPressed: () => onTapSkipOrLogin(
+                isLoginButton: true,
+              ),
             ),
             CustomTextButton(
-              onPressed: navigateToLogin,
+              onPressed: onTapSkipOrLogin,
               text: context.l10n.skip,
             ),
             20.verticalSpace,

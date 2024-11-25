@@ -1,6 +1,5 @@
 enum LocalStorageKey {
   languageCode('language_code'),
-  isRememberMe('is_remember_me'),
   token('token'),
   categoriesCache('categories_cache'),
   categoriesCacheTimestamp('categories_cache_timestamp'),
