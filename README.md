@@ -1,5 +1,3 @@
-# Piton Catalog
-
 ## Uygulama Ekran Görüntüleri:
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
